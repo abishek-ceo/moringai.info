@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="razorpay-key" content="" />
+  <title>Moringai — Pure Murungai Powder</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #145c3a;
+      --light-green: #e8f5ee;
+      --gold: #c8a84b;
+      --text: #1a1a1a;
+      --gray: #666;
+    }
+    body { font-family: 'Segoe UI', sans-serif; color: var(--text); background: #fff; }
+
+    /* NAV */
+    nav {
+      background: var(--green);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { color: #fff; font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+    .nav-logo span { color: var(--gold); }
+    .nav-cart {
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--light-green) 0%, #fff 100%);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); color: var(--green); margin-bottom: 12px; }
+    .hero p { font-size: 17px; color: var(--gray); max-width: 500px; margin: 0 auto 30px; }
+
+    /* PRODUCT CARD */
+    .product-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .product-img {
+      flex: 1;
+      min-width: 260px;
+      max-width: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .product-img img { width: 100%; display: block; object-fit: cover; height: 340px; }
+    .product-info { flex: 1; min-width: 260px; }
+    .product-info h2 { font-size: 26px; color: var(--green); margin-bottom: 8px; }
+    .product-info .price { font-size: 32px; font-weight: 700; color: var(--green); margin: 12px 0; }
+    .product-info .price span { font-size: 16px; color: var(--gray); font-weight: 400; }
+    .product-info .desc { color: var(--gray); font-size: 15px; line-height: 1.6; margin-bottom: 16px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .chip {
+      background: var(--light-green);
+      color: var(--green);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .stock { color: #27ae60; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+
+    /* QTY + ADD TO CART */
+    .qty-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .qty-btn {
+      width: 36px; height: 36px;
+      background: var(--light-green);
+      color: var(--green);
+      border: none;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .qty-display { font-size: 18px; font-weight: 700; min-width: 30px; text-align: center; }
+    .btn-cart {
+      width: 100%;
+      padding: 14px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background 0.2s;
+    }
+    .btn-cart:hover { background: #0e4029; }
+    .btn-buy {
+      width: 100%;
+      padding: 14px;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-buy:hover { background: #b08a30; }
+
+    /* WHY SECTION */
+    .why-section {
+      background: var(--light-green);
+      padding: 50px 24px;
+      text-align: center;
+    }
+    .why-section h2 { font-size: 26px; color: var(--green); margin-bottom: 30px; }
+    .why-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .why-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      flex: 1;
+      min-width: 160px;
+      max-width: 180px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    .why-card .icon { font-size: 32px; margin-bottom: 10px; }
+    .why-card p { font-size: 14px; color: var(--gray); }
+    .why-card strong { display: block; color: var(--green); margin-bottom: 4px; font-size: 15px; }
+
+    /* CHECKOUT MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      width: 100%;
+      max-width: 460px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal h2 { font-size: 22px; color: var(--green); margin-bottom: 20px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--gray); margin-bottom: 5px; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--green); }
+    .order-summary {
+      background: var(--light-green);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+    .order-summary .total { font-size: 20px; font-weight: 700; color: var(--green); margin-top: 8px; }
+    .payment-options { display: flex; gap: 10px; margin-bottom: 20px; }
+    .pay-btn {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid var(--green);
+      background: #fff;
+      color: var(--green);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pay-btn.active { background: var(--green); color: #fff; }
+    .modal-close {
+      float: right;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--gray);
+      margin-top: -8px;
+    }
+    .alert {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      display: none;
+    }
+    .alert.error { background: #fdecea; color: #c0392b; display: block; }
+    .alert.success { background: #e8f5ee; color: var(--green); display: block; }
+
+    /* FOOTER */
+    footer {
+      background: var(--green);
+      color: #fff;
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+      margin-top: 60px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .product-section { flex-direction: column; }
+      .product-img { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Moring<span>ai</span></div>
+  <button class="nav-cart" onclick="openCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Pure Murungai Powder 🌿</h1>
+  <p>Single-origin, slow shade-dried moringa leaves. No fillers. No additives. Just nature.</p>
+</div>
+
+<!-- PRODUCT -->
+<div class="product-section">
+  <div class="product-img">
+    <img id="product-image" src="" alt="Moringai Murungai Powder" />
+  </div>
+  <div class="product-info">
+    <h2 id="product-name">Loading...</h2>
+    <div class="chips" id="product-chips"></div>
+    <p class="desc" id="product-desc"></p>
+    <div class="stock" id="product-stock"></div>
+    <div class="price">₹<span id="product-price">—</span> <span>/ pouch</span></div>
+    <div class="qty-row">
+      <button class="qty-btn" onclick="changeQty(-1)">−</button>
+      <span class="qty-display" id="qty">1</span>
+      <button class="qty-btn" onclick="changeQty(1)">+</button>
+    </div>
+    <button class="btn-cart" onclick="addToCart()">Add to Cart</button>
+    <button class="btn-buy" onclick="buyNow()">Buy Now — Pay on Delivery / Online</button>
+  </div>
+</div>
+
+<!-- WHY MORINGAI -->
+<div class="why-section">
+  <h2>Why Moringai?</h2>
+  <div class="why-grid">
+    <div class="why-card"><div class="icon">🌿</div><strong>100% Pure</strong><p>No additives or fillers</p></div>
+    <div class="why-card"><div class="icon">🧪</div><strong>Lab Tested</strong><p>Quality guaranteed</p></div>
+    <div class="why-card"><div class="icon">🚚</div><strong>Fast Shipping</strong><p>Ships in 2 business days</p></div>
+    <div class="why-card"><div class="icon">🌱</div><strong>Vegan</strong><p>Plant-based goodness</p></div>
+    <div class="why-card"><div class="icon">📦</div><strong>30 Servings</strong><p>100g per pouch</p></div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>Complete Your Order</h2>
+    <div id="alert" class="alert"></div>
+    <div class="order-summary" id="order-summary"></div>
+    <div class="form-group">
+      <label>Full Name *</label>
+      <input type="text" id="f-name" placeholder="Your full name" />
+    </div>
+    <div class="form-group">
+      <label>Phone Number *</label>
+      <input type="tel" id="f-phone" placeholder="10-digit mobile number" maxlength="10" />
+    </div>
+    <div class="form-group">
+      <label>Email (optional)</label>
+      <input type="email" id="f-email" placeholder="your@email.com" />
+    </div>
+    <div class="form-group">
+      <label>City *</label>
+      <input type="text" id="f-city" placeholder="City" />
+    </div>
+    <div class="form-group">
+      <label>Delivery Address *</label>
+      <textarea id="f-address" rows="3" placeholder="Full delivery address with pincode"></textarea>
+    </div>
+    <div class="payment-options">
+      <button class="pay-btn active" id="pay-cod" onclick="setPayment('cod')">💵 Cash on Delivery</button>
+      <button class="pay-btn" id="pay-online" onclick="setPayment('online')">💳 Pay Online</button>
+    </div>
+    <button class="btn-cart" id="place-order-btn" onclick="placeOrder()">Place Order 🚀</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Moringai. Pure Murungai Powder from Tamil Nadu. 🌿</p>
+  <p style="margin-top:6px">📞 <a href="tel:+919514499924">+91 95144 99924</a> &nbsp;|&nbsp; ✉️ <a href="mailto:moringa.info@gmail.com">moringa.info@gmail.com</a></p>
+</footer>
+
+<script src="checkout.js"></script>
+<script>
+  let product = {};
+  let qty = 1;
+  let paymentMethod = 'cod';
+  let cart = [];
+
+  async function loadProduct() {
+    try {
+      const res = await fetch('/api/product');
+      product = await res.json();
+      document.getElementById('product-name').textContent = product.name;
+      document.getElementById('product-desc').textContent = product.description;
+      document.getElementById('product-price').textContent = product.price;
+      document.getElementById('product-stock').textContent = product.stock;
+      document.getElementById('product-image').src = product.image;
+      const chipsEl = document.getElementById('product-chips');
+      (product.chips || []).forEach(c => {
+        const span = document.createElement('span');
+        span.className = 'chip';
+        span.textContent = c;
+        chipsEl.appendChild(span);
+      });
+    } catch(e) { console.error('Failed to load product', e); }
+  }
+
+  function changeQty(delta) {
+    qty = Math.max(1, qty + delta);
+    document.getElementById('qty').textContent = qty;
+  }
+
+  function addToCart() {
+    cart = [{ qty, price: product.price, name: product.name }];
+    document.getElementById('cart-count').textContent = qty;
+    const btn = document.querySelector('.btn-cart');
+    btn.textContent = '✅ Added! Click cart to checkout';
+    setTimeout(() => btn.textContent = 'Add to Cart', 2000);
+  }
+
+  function openCart() {
+    if (!cart.length) { addToCart(); }
+    openModal();
+  }
+
+  function buyNow() {
+    cart = [{ qty, price: product.price, name: product.name }];
+    openModal();
+  }
+
+  function openModal() {
+    const total = cart.reduce((a,b) => a + b.qty * b.price, 0);
+    document.getElementById('order-summary').innerHTML =
+      `<div>${product.name} × ${cart[0].qty}</div><div class="total">Total: ₹${total}</div>`;
+    document.getElementById('modal').classList.add('active');
+    document.getElementById('alert').className = 'alert';
+    document.getElementById('alert').textContent = '';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  function setPayment(method) {
+    paymentMethod = method;
+    document.getElementById('pay-cod').classList.toggle('active', method === 'cod');
+    document.getElementById('pay-online').classList.toggle('active', method === 'online');
+  }
+
+  function showAlert(msg, type) {
+    const el = document.getElementById('alert');
+    el.textContent = msg;
+    el.className = 'alert ' + type;
+  }
+
+  async function placeOrder() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const city = document.getElementById('f-city').value.trim();
+    const address = document.getElementById('f-address').value.trim();
+    if (!name || !phone || !city || !address) return showAlert('Please fill in all required fields.', 'error');
+    if (phone.length !== 10) return showAlert('Enter a valid 10-digit phone number.', 'error');
+
+    const btn = document.getElementById('place-order-btn');
+    btn.disabled = true;
+    btn.textContent = 'Processing...';
+
+    const customerData = { customer: name, email, phone, city, address };
+
+    try {
+      if (paymentMethod === 'online') {
+        const result = await startRazorpayPayment(cart, customerData);
+        showAlert('✅ Payment successful! Order #' + result.order.id + ' placed.', 'success');
+      } else {
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...customerData, items: cart, payment: { method: 'cod' } })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Order failed');
+        showAlert('✅ Order placed! ID: ' + data.order.id + '. We will contact you soon on WhatsApp.', 'success');
+      }
+      cart = [];
+      document.getElementById('cart-count').textContent = 0;
+      btn.textContent = 'Order Placed ✅';
+    } catch(e) {
+      showAlert('❌ ' + e.message, 'error');
+      btn.disabled = false;
+      btn.textContent = 'Place Order 🚀';
+    }
+  }
+
+  loadProduct();
+</script>
+</body>
+</html>

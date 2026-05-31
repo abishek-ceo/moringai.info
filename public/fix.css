@@ -7,6 +7,47 @@
 /* ── VISIBILITY FIX ──────────────────────────────────────── */
 .fade-in { opacity:1 !important; transform:translateY(0) !important; }
 
+/* ── GLOBAL CURSOR FIX ───────────────────────────────────── */
+/* Every clickable/interactive element must show a pointer */
+.whatsapp-float,
+.chat-float,
+.chat-btn,
+[class*="float-btn"],
+[class*="chat"],
+.product-card,
+.product-wishlist,
+.add-to-cart,
+.btn-checkout,
+.btn-buynow,
+.btn-place-order,
+.filter-btn,
+.variant-btn,
+.feature-card,
+.testimonial-card,
+.blog-card,
+.social-btn,
+.footer-badge,
+.footer-col ul li a,
+.trust-item,
+.about-metric,
+.nutrition-stat,
+.cart-upsell,
+.cart-upsell-btn,
+.cart-item,
+.payment-method,
+.contact-item,
+.hero-badge,
+.section-tag,
+.blog-tag,
+.nav a,
+nav a,
+.logo,
+.logo-icon,
+.cart-btn,
+.mobile-buy-bar button,
+[class*="btn"],
+[class*="-card"] { cursor: pointer !important; }
+
 /* ════════════════════════════════════════════
    1. NAVBAR
 ════════════════════════════════════════════ */
@@ -596,8 +637,8 @@ nav a::after {
   0%,100% { transform:translateY(0) scale(1); }
   50%     { transform:translateY(-8px) scale(1.05); }
 }
-.whatsapp-float { animation:waFloat 2.5s ease-in-out infinite; }
-.whatsapp-float:hover { animation:none !important; transform:scale(1.15) !important; }
+.whatsapp-float { animation:waFloat 2.5s ease-in-out infinite; cursor:pointer !important; }
+.whatsapp-float:hover { animation:none !important; transform:scale(1.15) !important; cursor:pointer !important; }
 
 /* ════════════════════════════════════════════
    14. CART SIDEBAR

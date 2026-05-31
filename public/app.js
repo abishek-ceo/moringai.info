@@ -16,7 +16,6 @@ function addToCart(name, price, emoji, variant) {
   if (existing) { existing.qty += 1; }
   else { cart.push({ name: name, price: price, emoji: emoji, variant: variant, qty: 1 }); }
   updateCartUI();
-  toggleCart(true);
   showToast('✅ ' + name + ' added to cart!');
 }
 
@@ -294,7 +293,6 @@ function startTimers() {
 
 // ─── SCROLL FADE-IN ──────────────────────────────────────
 function initFadeIn() {
-  // Immediately make all visible (CSS fix.css handles opacity)
   document.querySelectorAll('.fade-in').forEach(function(el){
     el.classList.add('visible');
   });

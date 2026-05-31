@@ -1,3 +1,10 @@
+// Auto-inject fix.css so products are always visible (no HTML edit needed)
+(function(){
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'fix.css';
+  document.head.appendChild(link);
+})();
 
 // ─── STATE ───────────────────────────────────────────────
 var cart = [];
@@ -287,17 +294,9 @@ function startTimers() {
 
 // ─── SCROLL FADE-IN ──────────────────────────────────────
 function initFadeIn() {
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
+  // Immediately make all visible (CSS fix.css handles opacity)
   document.querySelectorAll('.fade-in').forEach(function(el){
-    observer.observe(el);
+    el.classList.add('visible');
   });
 }
 

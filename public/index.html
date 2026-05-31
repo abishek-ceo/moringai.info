@@ -66,7 +66,6 @@
   .hamburger { display: none; flex-direction: column; gap: 5px; background: none; padding: 8px; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
 
-  /* SEARCH BAR */
   .search-bar-wrapper { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999; background: white; border-bottom: 2px solid var(--green-pale); padding: 14px 5%; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
   .search-bar-wrapper.open { display: block; }
   .search-bar-inner { max-width: 680px; margin: 0 auto; display: flex; gap: 10px; align-items: center; }
@@ -77,7 +76,6 @@
   .search-result-chip { background: var(--green-xpale); color: var(--green); border-radius: 50px; padding: 5px 14px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--green-pale); transition: var(--transition); }
   .search-result-chip:hover { background: var(--green); color: white; }
 
-  /* HERO */
   .hero { background: linear-gradient(135deg, #0a3622 0%, #1b4332 40%, #2d6a4f 100%); min-height: 92vh; display: flex; align-items: center; padding: 80px 5%; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
   .hero-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; width: 100%; position: relative; }
@@ -104,19 +102,16 @@
   .hero-price-old { font-size: 18px; color: rgba(255,255,255,0.4); text-decoration: line-through; }
   .hero-badge-discount { background: #e63946; color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 50px; }
 
-  /* TRUST BAR */
   .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 20px 5%; }
   .trust-bar-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
   .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text); }
   .trust-item span:first-child { font-size: 22px; }
 
-  /* SECTION HEADER */
   .section-header { text-align: center; margin-bottom: 56px; }
   .section-tag { display: inline-block; background: var(--green-pale); color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 16px; }
   .section-header h2 { font-size: clamp(28px, 4vw, 44px); color: var(--dark); margin-bottom: 16px; line-height: 1.25; }
   .section-header p { color: var(--text-muted); font-size: 17px; max-width: 600px; margin: 0 auto; }
 
-  /* PRODUCTS */
   #products { padding: 96px 5%; background: var(--off-white); }
   .products-inner { max-width: 1300px; margin: 0 auto; }
   .products-filter { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
@@ -152,7 +147,6 @@
   .variant-btn { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; border: 1.5px solid var(--border); color: var(--text-muted); background: white; transition: var(--transition); cursor: pointer; }
   .variant-btn.active, .variant-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-xpale); }
 
-  /* STOCK INDICATOR */
   .stock-indicator { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
   .stock-bar-track { flex: 1; height: 6px; background: #f0f0f0; border-radius: 50px; overflow: hidden; }
   .stock-bar-fill { height: 100%; border-radius: 50px; }
@@ -164,11 +158,9 @@
   .stock-text.medium { color: #f4a261; }
   .stock-text.high { color: var(--green); }
 
-  /* URGENCY TIMER */
   .urgency-timer { background: #fff5f0; border: 1px solid #ffd4c2; border-radius: 8px; padding: 7px 12px; font-size: 12px; font-weight: 600; color: #c0392b; display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
   .urgency-timer span.timer-val { font-family: monospace; font-size: 13px; letter-spacing: 1px; }
 
-  /* WHY US */
   #why { padding: 96px 5%; background: white; }
   .why-inner { max-width: 1300px; margin: 0 auto; }
   .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 28px; }
@@ -178,7 +170,6 @@
   .feature-card h3 { font-size: 17px; color: var(--dark); margin-bottom: 10px; }
   .feature-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
-  /* NUTRITION */
   #nutrition { padding: 96px 5%; background: var(--green); }
   .nutrition-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
   .nutrition-content .section-tag { background: rgba(255,255,255,0.15); color: white; }
@@ -196,7 +187,6 @@
   .nutrition-bar-track { background: rgba(255,255,255,0.15); border-radius: 50px; height: 8px; overflow: hidden; }
   .nutrition-bar-fill { height: 100%; border-radius: 50px; background: linear-gradient(90deg, #b7e4c7, #52b788); }
 
-  /* TESTIMONIALS */
   #testimonials { padding: 96px 5%; background: var(--off-white); }
   .testimonials-inner { max-width: 1300px; margin: 0 auto; }
   .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
@@ -211,7 +201,6 @@
   .testimonial-rating { color: #f4a261; font-size: 14px; margin-bottom: 12px; }
   .testimonial-product { font-size: 11px; color: var(--green); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
 
-  /* ABOUT */
   #about { padding: 96px 5%; background: white; }
   .about-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
   .about-content h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--dark); margin-bottom: 20px; }
@@ -228,7 +217,6 @@
   .about-metric strong { display: block; font-size: 26px; color: var(--green); font-family: 'Playfair Display', serif; font-weight: 700; }
   .about-metric span { font-size: 12px; color: var(--text-muted); }
 
-  /* BLOG */
   #blog { padding: 96px 5%; background: var(--off-white); }
   .blog-inner { max-width: 1300px; margin: 0 auto; }
   .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
@@ -242,7 +230,6 @@
   .blog-excerpt { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
   .blog-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-muted); }
 
-  /* CONTACT */
   #contact { padding: 96px 5%; background: white; }
   .contact-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
   .contact-info h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--dark); margin-bottom: 20px; }
@@ -260,7 +247,6 @@
   .form-group textarea { resize: vertical; min-height: 120px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-  /* CART */
   .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; opacity: 0; pointer-events: none; transition: var(--transition); }
   .cart-overlay.open { opacity: 1; pointer-events: all; }
   .cart-sidebar { position: fixed; top: 0; right: -440px; width: 420px; height: 100vh; background: white; z-index: 2001; transition: var(--transition); display: flex; flex-direction: column; box-shadow: -8px 0 40px rgba(0,0,0,0.15); }
@@ -270,7 +256,6 @@
   .cart-close { background: none; font-size: 22px; color: var(--text-muted); padding: 4px 8px; border-radius: 8px; cursor: pointer; }
   .cart-close:hover { background: var(--border); }
 
-  /* CART PROGRESS BAR */
   .cart-progress { padding: 12px 20px 0; }
   .cart-progress-bar-track { height: 8px; background: #f0f0f0; border-radius: 50px; overflow: hidden; margin-top: 6px; }
   .cart-progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--green-light), var(--green)); border-radius: 50px; transition: width 0.5s ease; }
@@ -294,7 +279,6 @@
   .cart-remove { background: none; color: #e63946; font-size: 18px; padding: 4px 8px; border: none; cursor: pointer; line-height: 1; }
   .cart-remove:hover { opacity: 0.7; }
 
-  /* BUNDLE UPSELL IN CART */
   .cart-upsell { margin: 12px 0; background: var(--green-xpale); border: 1.5px dashed var(--green-pale); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
   .cart-upsell-emoji { font-size: 28px; }
   .cart-upsell-text { flex: 1; }
@@ -309,7 +293,6 @@
   .btn-checkout { width: 100%; padding: 16px; background: var(--green); color: white; border-radius: 12px; font-size: 16px; font-weight: 700; border: none; cursor: pointer; transition: var(--transition); }
   .btn-checkout:hover { background: var(--green-light); }
 
-  /* CHECKOUT MODAL */
   .checkout-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: var(--transition); padding: 16px; }
   .checkout-overlay.open { opacity: 1; pointer-events: all; }
   .checkout-modal { background: white; border-radius: 24px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; padding: 40px; position: relative; box-shadow: 0 24px 80px rgba(0,0,0,0.2); transform: translateY(20px); transition: var(--transition); }
@@ -340,22 +323,18 @@
   .btn-place-order:disabled { opacity: 0.6; cursor: not-allowed; }
   .razorpay-note { text-align: center; font-size: 11px; color: var(--text-muted); margin-top: 12px; }
 
-  /* TOAST */
   .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); z-index: 9999; background: var(--dark); color: white; padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 10px; opacity: 0; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 8px 24px rgba(0,0,0,0.2); white-space: nowrap; }
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-  /* WHATSAPP FLOAT */
   .whatsapp-float { position: fixed; bottom: 90px; right: 24px; z-index: 9998; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); text-decoration: none; }
   .whatsapp-float:hover { background: #20ba58; transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
   .whatsapp-tooltip { position: absolute; right: 68px; background: var(--dark); color: white; font-size: 12px; font-weight: 600; white-space: nowrap; padding: 6px 12px; border-radius: 8px; opacity: 0; pointer-events: none; transition: var(--transition); }
   .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
 
-  /* MOBILE FLOATING BUY BUTTON */
   .mobile-buy-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1500; background: white; border-top: 2px solid var(--border); padding: 12px 20px; gap: 12px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
   .mobile-buy-bar .btn-cart { flex: 1; padding: 14px; background: var(--green-pale); color: var(--green); border-radius: 12px; font-size: 15px; font-weight: 700; border: 2px solid var(--green); cursor: pointer; }
   .mobile-buy-bar .btn-buynow { flex: 2; padding: 14px; background: var(--green); color: white; border-radius: 12px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; }
 
-  /* FOOTER */
   footer { background: var(--dark); color: rgba(255,255,255,0.75); padding: 80px 5% 32px; }
   .footer-inner { max-width: 1300px; margin: 0 auto; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
@@ -373,13 +352,11 @@
   .footer-badges { display: flex; gap: 12px; align-items: center; }
   .footer-badge { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 12px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.6); }
 
-  /* MOBILE MENU */
   .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--border); padding: 20px 5%; z-index: 999; flex-direction: column; gap: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
   .mobile-menu.open { display: flex; }
   .mobile-menu a { display: block; padding: 12px 16px; border-radius: 10px; font-weight: 500; color: var(--text); transition: var(--transition); }
   .mobile-menu a:hover { background: var(--green-xpale); color: var(--green); }
 
-  /* RESPONSIVE */
   @media(max-width: 1024px) {
     .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .hero-desc { margin: 0 auto 40px; }
@@ -442,756 +419,4 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-actions">
-      <button onclick="toggleSearch()" title="Search">🔍</button>
-      <button onclick="toggleCart()" class="cart-btn" title="Cart">
-        🛒
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-      <button class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- REAL SEARCH BAR -->
-<div class="search-bar-wrapper" id="searchBarWrapper">
-  <div class="search-bar-inner">
-    <input type="text" class="search-input" id="searchInput" placeholder="Search for moringa powder, capsules, oil, tea..." oninput="liveSearch(this.value)" onkeydown="if(event.key==='Escape')toggleSearch()">
-    <button class="search-close-btn" onclick="toggleSearch()">✕</button>
-  </div>
-  <div class="search-results-preview" id="searchResultsPreview"></div>
-</div>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#products" onclick="toggleMenu()">Shop</a>
-  <a href="#why" onclick="toggleMenu()">Why Us</a>
-  <a href="#nutrition" onclick="toggleMenu()">Nutrition</a>
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#blog" onclick="toggleMenu()">Blog</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-</div>
-
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge">🌿 &nbsp;Tamil Nadu's Finest Moringa</div>
-      <h1>India's Purest<br><span>Murungai Powder</span><br>Delivered to You</h1>
-      <p class="hero-desc">Sourced directly from 200+ organic farmers in Tamil Nadu. NABL-certified, pesticide-free moringa powder delivered across India in 2–5 days.</p>
-      <div class="hero-ctas">
-        <a href="#products" class="btn-primary">Shop Now →</a>
-        <a href="#about" class="btn-outline">Our Story</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><strong>200+</strong><span>Farming Families</span></div>
-        <div class="hero-stat"><strong>18</strong><span>Products</span></div>
-        <div class="hero-stat"><strong>10K+</strong><span>Happy Customers</span></div>
-        <div class="hero-stat"><strong>NABL</strong><span>Certified Labs</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-product-card">
-        <span class="hero-product-emoji">🌿</span>
-        <h3>Moringai Murungai Powder</h3>
-        <p>100g pouch • Lab tested • Vegan</p>
-        <div class="hero-price-row">
-          <span class="hero-price">₹899</span>
-          <span class="hero-price-old">₹1,199</span>
-          <span class="hero-badge-discount">25% OFF</span>
-        </div>
-        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="addToCart('Moringai Murungai Powder',899,'🌿','100g Pouch')">Add to Cart</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="trust-bar">
-  <div class="trust-bar-inner">
-    <div class="trust-item"><span>🚚</span> Free Shipping above ₹499</div>
-    <div class="trust-item"><span>🔬</span> NABL Lab Certified</div>
-    <div class="trust-item"><span>🌱</span> 100% Organic &amp; Vegan</div>
-    <div class="trust-item"><span>↩️</span> 30-Day Return Policy</div>
-    <div class="trust-item"><span>🔒</span> Secure Razorpay Payment</div>
-    <div class="trust-item"><span>💵</span> Cash on Delivery Available</div>
-  </div>
-</div>
-
-<section id="products">
-  <div class="products-inner">
-    <div class="section-header fade-in">
-      <span class="section-tag">Our Products</span>
-      <h2>Nature's Superfood, Every Form</h2>
-      <p>From farm-fresh powder to cold-pressed oil — moringa in its finest expressions.</p>
-    </div>
-    <div class="products-filter">
-      <button class="filter-btn active" onclick="filterProducts('all', this)">All Products</button>
-      <button class="filter-btn" onclick="filterProducts('powder', this)">Powder</button>
-      <button class="filter-btn" onclick="filterProducts('capsules', this)">Capsules</button>
-      <button class="filter-btn" onclick="filterProducts('oil', this)">Oil</button>
-      <button class="filter-btn" onclick="filterProducts('tea', this)">Tea</button>
-      <button class="filter-btn" onclick="filterProducts('combo', this)">Combos</button>
-    </div>
-    <div class="products-grid" id="productsGrid">
-
-      <!-- Product 1 -->
-      <div class="product-card fade-in" data-category="powder" data-name="Moringai Murungai Powder">
-        <span class="product-badge badge-bestseller">Bestseller</span>
-        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
-        <div class="product-img">🌿</div>
-        <div class="product-info">
-          <div class="product-category">Powder</div>
-          <div class="product-name">Moringai Murungai Powder</div>
-          <div class="product-desc">Stone-ground from fresh moringa leaves. No additives, no fillers. Pure nutrition in every spoon.</div>
-          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(284 reviews)</span></div>
-          <div class="stock-indicator">
-            <div class="stock-bar-track"><div class="stock-bar-fill low" style="width:18%"></div></div>
-            <span class="stock-text low">⚡ Only 9 left!</span>
-          </div>
-          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="7200">02:00:00</span></div>
-          <div class="product-variants">
-            <button class="variant-btn active" onclick="selectVariant(this,'100g Pouch')">100g</button>
-            <button class="variant-btn" onclick="selectVariant(this,'250g Pouch')">250g</button>
-            <button class="variant-btn" onclick="selectVariant(this,'500g Pouch')">500g</button>
-          </div>
-          <div class="product-footer">
-            <div class="product-price">
-              <span class="price-current">₹899</span>
-              <span class="price-old">₹1,199</span>
-              <span class="price-save">Save ₹300</span>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('Moringai Murungai Powder',899,'🌿', getActiveVariant(this))">+ Add</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="product-card fade-in" data-category="capsules" data-name="Moringa Veg Capsules">
-        <span class="product-badge badge-new">New</span>
-        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
-        <div class="product-img">💊</div>
-        <div class="product-info">
-          <div class="product-category">Capsules</div>
-          <div class="product-name">Moringa Veg Capsules</div>
-          <div class="product-desc">60 veg capsules with 500mg pure moringa each. No gelatin, no fillers. Clean label.</div>
-          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(156 reviews)</span></div>
-          <div class="stock-indicator">
-            <div class="stock-bar-track"><div class="stock-bar-fill medium" style="width:45%"></div></div>
-            <span class="stock-text medium">🟡 Limited stock</span>
-          </div>
-          <div class="product-variants">
-            <button class="variant-btn active" onclick="selectVariant(this,'60 Caps')">60 Caps</button>
-            <button class="variant-btn" onclick="selectVariant(this,'120 Caps')">120 Caps</button>
-          </div>
-          <div class="product-footer">
-            <div class="product-price">
-              <span class="price-current">₹899</span>
-              <span class="price-old">₹1,099</span>
-              <span class="price-save">Save ₹200</span>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('Moringa Veg Capsules',899,'💊', getActiveVariant(this))">+ Add</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product-card fade-in" data-category="oil" data-name="Cold-Pressed Moringa Oil">
-        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
-        <div class="product-img">🫙</div>
-        <div class="product-info">
-          <div class="product-category">Oil</div>
-          <div class="product-name">Cold-Pressed Moringa Oil</div>
-          <div class="product-desc">Multi-use moringa oil for cooking, hair care and skincare. Single cold-press, unrefined.</div>
-          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(98 reviews)</span></div>
-          <div class="stock-indicator">
-            <div class="stock-bar-track"><div class="stock-bar-fill high" style="width:70%"></div></div>
-            <span class="stock-text high">✅ In stock</span>
-          </div>
-          <div class="product-variants">
-            <button class="variant-btn active" onclick="selectVariant(this,'50ml')">50ml</button>
-            <button class="variant-btn" onclick="selectVariant(this,'100ml')">100ml</button>
-          </div>
-          <div class="product-footer">
-            <div class="product-price">
-              <span class="price-current">₹899</span>
-              <span class="price-old">₹1,199</span>
-              <span class="price-save">Save ₹300</span>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('Cold-Pressed Moringa Oil',899,'🫙', getActiveVariant(this))">+ Add</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="product-card fade-in" data-category="tea" data-name="Moringa Green Tea Bags">
-        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
-        <div class="product-img">🍵</div>
-        <div class="product-info">
-          <div class="product-category">Tea</div>
-          <div class="product-name">Moringa Green Tea Bags</div>
-          <div class="product-desc">25 pyramid tea bags blending moringa with Darjeeling green tea. Energizing and antioxidant-rich.</div>
-          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(201 reviews)</span></div>
-          <div class="stock-indicator">
-            <div class="stock-bar-track"><div class="stock-bar-fill high" style="width:80%"></div></div>
-            <span class="stock-text high">✅ In stock</span>
-          </div>
-          <div class="product-variants">
-            <button class="variant-btn active" onclick="selectVariant(this,'25 Bags')">25 Bags</button>
-            <button class="variant-btn" onclick="selectVariant(this,'50 Bags')">50 Bags</button>
-          </div>
-          <div class="product-footer">
-            <div class="product-price">
-              <span class="price-current">₹899</span>
-              <span class="price-old">₹1,099</span>
-              <span class="price-save">Save ₹200</span>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('Moringa Green Tea',899,'🍵', getActiveVariant(this))">+ Add</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="product-card fade-in" data-category="powder" data-name="Moringa Seed Powder">
-        <span class="product-badge badge-sale">Sale</span>
-        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
-        <div class="product-img">🌾</div>
-        <div class="product-info">
-          <div class="product-category">Powder</div>
-          <div class="product-name">Moringa Seed Powder</div>
-          <div class="product-desc">Rare moringa seed powder for blood sugar support and detox. Traditionally used in Ayurveda.</div>
-          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(63 reviews)</span></div>
-          <div class="stock-indicator">
-            <div class="stock-bar-track"><div class="stock-bar-fill low" style="width:12%"></div></div>
-            <span class="stock-text low">⚡ Only 6 left!</span>
-          </div>
-          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="10800">03:00:00</span></div>
-          <div class="product-variants">
-            <button class="variant-btn active" onclick="selectVariant(this,'100g')">100g</button>
-            <button class="variant-btn" onclick="selectVariant(this,'200g')">200g</button>
-          </div>
-          <div class="product-footer">
-            <div class="product-price">
-              <span class="price-current">₹899</span>
-              <span class="price-old">₹1,199</span>
-              <span class="price-save">Save ₹300</span>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('Moringa Seed Powder',899,'🌾', getActiveVariant(this))">+ Add</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 6 - Combo -->
-      <div class="product-card fade-in" data-category="combo" data-name="Wellness Starter Pack">
-        <span class="product-badge badge-bestseller">Best Value</span>
-        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
-        <div class="product-img">🎁</div>
-        <div class="product-info">
-          <div class="product-category">Combo</div>
-          <div class="product-name">Wellness Starter Pack</div>
-          <div class="product-desc">Powder + Capsules + Tea. Perfect for beginners. Huge savings on our best trio.</div>
-          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(342 reviews)</span></div>
-          <div class="stock-indicator">
-            <div class="stock-bar-track"><div class="stock-bar-fill medium" style="width:30%"></div></div>
-            <span class="stock-text medium">🟡 Selling fast!</span>
-          </div>
-          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="5400">01:30:00</span></div>
-          <div class="product-variants">
-            <button class="variant-btn active" onclick="selectVariant(this,'Starter Pack')">Starter</button>
-            <button class="variant-btn" onclick="selectVariant(this,'Premium Pack')">Premium</button>
-          </div>
-          <div class="product-footer">
-            <div class="product-price">
-              <span class="price-current">₹899</span>
-              <span class="price-old">₹1,499</span>
-              <span class="price-save">Save ₹600</span>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('Wellness Starter Pack',899,'🎁', getActiveVariant(this))">+ Add</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="why">
-  <div class="why-inner">
-    <div class="section-header fade-in">
-      <span class="section-tag">Why Moringai</span>
-      <h2>Purity You Can Trust, Quality You Can Feel</h2>
-      <p>Every Moringai product is a promise — from our farmers' hands to your home.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card fade-in"><div class="feature-icon">🌱</div><h3>Farm-Direct Sourcing</h3><p>Direct partnerships with 200+ organic farming families in Tamil Nadu and Andhra Pradesh, ensuring freshness and fair trade.</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">🔬</div><h3>NABL Lab Certified</h3><p>Every batch tested at NABL-accredited labs for purity, potency, heavy metals, pesticides, and microbial contamination.</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">🌿</div><h3>100% Organic &amp; Vegan</h3><p>No synthetic fertilizers, no pesticides, no fillers, no gelatin. Certified organic from soil to shelf.</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">📦</div><h3>Eco-Friendly Packaging</h3><p>All packaging is biodegradable. We plant a tree with every order as part of our carbon-neutral commitment.</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">🚚</div><h3>Pan-India Delivery</h3><p>Delivered across India in 2–5 business days in vacuum-sealed, freshness-preserving packaging.</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">↩️</div><h3>30-Day Guarantee</h3><p>Not satisfied? We offer a no-questions-asked 30-day return and refund policy on all products.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="nutrition">
-  <div class="nutrition-inner">
-    <div class="nutrition-content fade-in">
-      <span class="section-tag">Nutrition Science</span>
-      <h2>More Nutrients Per Gram Than Any Superfood</h2>
-      <p>Gram for gram, moringa outperforms milk for calcium, spinach for iron, oranges for vitamin C, and carrots for beta-carotene. This is why it's called the "Tree of Life."</p>
-      <div class="nutrition-stats">
-        <div class="nutrition-stat"><strong>7×</strong><span>More Vitamin C than Oranges</span></div>
-        <div class="nutrition-stat"><strong>4×</strong><span>More Calcium than Milk</span></div>
-        <div class="nutrition-stat"><strong>3×</strong><span>More Iron than Spinach</span></div>
-        <div class="nutrition-stat"><strong>4×</strong><span>More Beta-Carotene than Carrots</span></div>
-      </div>
-    </div>
-    <div class="nutrition-visual fade-in">
-      <span class="nutrition-emoji">🌿</span>
-      <div class="nutrition-bars">
-        <div class="nutrition-bar"><div class="nutrition-bar-label"><span>Vitamin C</span><span>220mg/100g</span></div><div class="nutrition-bar-track"><div class="nutrition-bar-fill" style="width:88%"></div></div></div>
-        <div class="nutrition-bar"><div class="nutrition-bar-label"><span>Calcium</span><span>440mg/100g</span></div><div class="nutrition-bar-track"><div class="nutrition-bar-fill" style="width:72%"></div></div></div>
-        <div class="nutrition-bar"><div class="nutrition-bar-label"><span>Iron</span><span>28mg/100g</span></div><div class="nutrition-bar-track"><div class="nutrition-bar-fill" style="width:65%"></div></div></div>
-        <div class="nutrition-bar"><div class="nutrition-bar-label"><span>Protein</span><span>27g/100g</span></div><div class="nutrition-bar-track"><div class="nutrition-bar-fill" style="width:80%"></div></div></div>
-        <div class="nutrition-bar"><div class="nutrition-bar-label"><span>Antioxidants</span><span>Very High</span></div><div class="nutrition-bar-track"><div class="nutrition-bar-fill" style="width:95%"></div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="testimonials">
-  <div class="testimonials-inner">
-    <div class="section-header fade-in">
-      <span class="section-tag">Customer Reviews</span>
-      <h2>Real People. Real Results.</h2>
-      <p>Join 10,000+ customers who have transformed their wellness with Moringai.</p>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card fade-in"><div class="testimonial-product">Moringa Powder</div><div class="testimonial-rating">★★★★★</div><p class="testimonial-text">I've been using Moringai powder for 3 months and my energy levels have completely transformed. Pure quality!</p><div class="testimonial-author"><div class="author-avatar">P</div><div><div class="author-name">Priya Ramachandran</div><div class="author-title">Yoga Instructor, Chennai</div></div></div></div>
-      <div class="testimonial-card fade-in"><div class="testimonial-product">Moringa Capsules</div><div class="testimonial-rating">★★★★★</div><p class="testimonial-text">As a nutritionist I'm very picky about supplements. Moringai's capsules are the real deal — clean label, no fillers.</p><div class="testimonial-author"><div class="author-avatar">D</div><div><div class="author-name">Dr. Suresh Krishnamurthy</div><div class="author-title">Clinical Nutritionist, Bangalore</div></div></div></div>
-      <div class="testimonial-card fade-in"><div class="testimonial-product">Cold-Pressed Oil</div><div class="testimonial-rating">★★★★★</div><p class="testimonial-text">The moringa oil is exceptional — I use it for cooking and skincare. Packaging is gorgeous, delivery was super fast!</p><div class="testimonial-author"><div class="author-avatar">A</div><div><div class="author-name">Ananya Iyer</div><div class="author-title">Home Chef, Coimbatore</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="about-inner">
-    <div class="about-content fade-in">
-      <div><span class="section-tag">Our Story</span></div>
-      <h2>Born in Tamil Nadu's Moringa Fields</h2>
-      <p>Moringai was born from a simple conviction: India's most ancient superfood deserved a world-class platform. Our founders, raised in the moringa-rich villages of Tamil Nadu, watched this miraculous tree be overlooked by modern wellness markets.</p>
-      <p>We set out to change that. By building direct relationships with organic farmers and establishing rigorous quality standards, we've grown Moringai into India's most trusted moringa brand.</p>
-      <div class="about-timeline">
-        <div class="timeline-item"><div class="timeline-year">2020</div><div class="timeline-text">Started with 12 farming families and a single moringa powder product.</div></div>
-        <div class="timeline-item"><div class="timeline-year">2021</div><div class="timeline-text">Received NABL lab certification. Expanded to 5 products and 50+ farmers.</div></div>
-        <div class="timeline-item"><div class="timeline-year">2022</div><div class="timeline-text">Pan-India shipping launched. Crossed 10,000 customers milestone.</div></div>
-        <div class="timeline-item"><div class="timeline-year">2026</div><div class="timeline-text">200+ farming families, 18 products, and a growing community of wellness seekers.</div></div>
-      </div>
-    </div>
-    <div class="about-visual fade-in">
-      <span class="about-visual-emoji">🌳</span>
-      <div class="about-metrics">
-        <div class="about-metric"><strong>200+</strong><span>Farming Families</span></div>
-        <div class="about-metric"><strong>18</strong><span>Products</span></div>
-        <div class="about-metric"><strong>10K+</strong><span>Customers</span></div>
-        <div class="about-metric"><strong>NABL</strong><span>Certified</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="blog">
-  <div class="blog-inner">
-    <div class="section-header fade-in">
-      <span class="section-tag">Moringa Blog</span>
-      <h2>Insights, Recipes &amp; Science</h2>
-      <p>Evidence-based articles and recipes from our team of nutritionists.</p>
-    </div>
-    <div class="blog-grid">
-      <div class="blog-card fade-in"><div class="blog-img">🔬</div><div class="blog-content"><div class="blog-tag">Nutrition Science</div><div class="blog-title">Moringa's Nutrient Profile: A Complete Scientific Breakdown</div><p class="blog-excerpt">From ancient Ayurvedic texts to modern nutritional science, every vitamin, mineral, and antioxidant explained.</p><div class="blog-meta"><span>🗓 May 2026</span><span>•</span><span>8 min read</span></div></div></div>
-      <div class="blog-card fade-in"><div class="blog-img">🥤</div><div class="blog-content"><div class="blog-tag">Recipes</div><div class="blog-title">10 Moringa Smoothie Recipes That Actually Taste Amazing</div><p class="blog-excerpt">Chef-tested combinations that beautifully balance moringa's earthy notes with natural sweetness.</p><div class="blog-meta"><span>🗓 April 2026</span><span>•</span><span>5 min read</span></div></div></div>
-      <div class="blog-card fade-in"><div class="blog-img">⚖️</div><div class="blog-content"><div class="blog-tag">Comparison</div><div class="blog-title">Moringa vs Spirulina: Which Superfood Is Right for You?</div><p class="blog-excerpt">A rigorous nutritional comparison to help you choose the right superfood. Backed by peer-reviewed research.</p><div class="blog-meta"><span>🗓 March 2026</span><span>•</span><span>6 min read</span></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="contact-inner">
-    <div class="contact-info fade-in">
-      <div><span class="section-tag">Contact Us</span></div>
-      <h2>We'd Love to Hear From You</h2>
-      <p>Whether it's a product question, wholesale inquiry, or just a desire to connect — our team responds within 24 hours.</p>
-      <div class="contact-items">
-        <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><strong>Email</strong><span>moringa.info@gmail.com</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📱</div><div class="contact-item-text"><strong>WhatsApp</strong><span>+91 98765 43210</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text"><strong>Location</strong><span>Chennai, Tamil Nadu, India</span></div></div>
-      </div>
-    </div>
-    <div class="contact-form fade-in">
-      <form onsubmit="handleContactForm(event)">
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="Priya" required></div>
-          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma" required></div>
-        </div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="priya@example.com" required></div>
-        <div class="form-group"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
-        <div class="form-group">
-          <label>Subject</label>
-          <select>
-            <option value="">Select a topic</option>
-            <option>Product Inquiry</option>
-            <option>Order Support</option>
-            <option>Wholesale / B2B</option>
-            <option>Feedback</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Message</label><textarea placeholder="How can we help you?"></textarea></div>
-        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:14px;">Send Message 📩</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="logo-text">Moringai</span>
-        <p>India's most trusted moringa brand, sourced directly from Tamil Nadu's organic farmers. Pure, certified, and delivered with love.</p>
-        <div class="footer-social">
-          <a href="#" class="social-btn" aria-label="Instagram">📸</a>
-          <a href="#" class="social-btn" aria-label="Facebook">👍</a>
-          <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
-          <a href="#" class="social-btn" aria-label="Twitter">🐦</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Shop</h4>
-        <ul>
-          <li><a href="#products">Moringa Powder</a></li>
-          <li><a href="#products">Veg Capsules</a></li>
-          <li><a href="#products">Cold-Pressed Oil</a></li>
-          <li><a href="#products">Green Tea</a></li>
-          <li><a href="#products">Combos</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#about">Our Story</a></li>
-          <li><a href="#why">Why Moringai</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="#contact">Track Order</a></li>
-          <li><a href="#contact">Returns</a></li>
-          <li><a href="#contact">FAQ</a></li>
-          <li><a href="#contact">Wholesale</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Moringai. All rights reserved.</p>
-      <div class="footer-badges">
-        <span class="footer-badge">🔒 SSL Secure</span>
-        <span class="footer-badge">🌿 NABL Certified</span>
-        <span class="footer-badge">🚚 Pan-India Shipping</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- CART -->
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-  <div class="cart-header">
-    <h3>🛒 Your Cart</h3>
-    <button class="cart-close" onclick="toggleCart()">✕</button>
-  </div>
-  <div class="cart-progress" id="cartProgress">
-    <div class="cart-progress-text" id="cartProgressText">Add ₹499 more for free shipping!</div>
-    <div class="cart-progress-bar-track">
-      <div class="cart-progress-bar-fill" id="cartProgressFill" style="width:0%"></div>
-    </div>
-  </div>
-  <div class="cart-items" id="cartItemsContainer">
-    <div class="cart-empty">
-      <span class="cart-empty-icon">🛒</span>
-      <p>Your cart is empty.<br>Add some moringa goodness!</p>
-    </div>
-  </div>
-  <div class="cart-footer" id="cartFooter" style="display:none">
-    <div class="cart-upsell">
-      <span class="cart-upsell-emoji">🎁</span>
-      <div class="cart-upsell-text">
-        <strong>Add Wellness Starter Pack</strong>
-        <span>Save extra ₹600 with bundle</span>
-      </div>
-      <button class="cart-upsell-btn" onclick="addToCart('Wellness Starter Pack',899,'🎁','Powder+Capsules+Tea')">+ Add</button>
-    </div>
-    <div class="cart-subtotal">
-      <span>Subtotal</span>
-      <span id="cartSubtotal">₹0</span>
-    </div>
-    <div class="cart-shipping-note" id="cartShippingNote">🚚 Free shipping unlocked!</div>
-    <button class="btn-checkout" onclick="openCheckout()">Proceed to Checkout →</button>
-  </div>
-</div>
-
-<!-- CHECKOUT MODAL -->
-<div class="checkout-overlay" id="checkoutOverlay">
-  <div class="checkout-modal">
-    <button class="checkout-close" onclick="closeCheckout()">✕</button>
-    <h3>Complete Your Order</h3>
-    <p class="subtitle">Secure checkout — your data is safe with us 🔒</p>
-    <div class="order-summary">
-      <h4>Order Summary</h4>
-      <div id="checkoutOrderItems"></div>
-      <div class="order-row"><span>Shipping</span><span id="checkoutShipping">FREE</span></div>
-      <div class="order-row total"><span>Total</span><span id="checkoutTotal">₹0</span></div>
-    </div>
-    <form onsubmit="placeOrder(event)">
-      <div class="cform-row">
-        <div class="cform-group"><label>First Name *</label><input type="text" id="cfName" placeholder="Priya" required></div>
-        <div class="cform-group"><label>Last Name *</label><input type="text" id="cfLName" placeholder="Sharma" required></div>
-      </div>
-      <div class="cform-group"><label>Phone *</label><input type="tel" id="cfPhone" placeholder="+91 98765 43210" required pattern="[0-9+\s\-]{10,15}"></div>
-      <div class="cform-group"><label>Email *</label><input type="email" id="cfEmail" placeholder="priya@example.com" required></div>
-      <div class="cform-group"><label>Address *</label><input type="text" id="cfAddress" placeholder="House/Flat No, Street, Area" required></div>
-      <div class="cform-row">
-        <div class="cform-group"><label>City *</label><input type="text" id="cfCity" placeholder="Chennai" required></div>
-        <div class="cform-group"><label>PIN Code *</label><input type="text" id="cfPin" placeholder="600001" required pattern="[0-9]{6}" maxlength="6"></div>
-      </div>
-      <div class="cform-group">
-        <label>State *</label>
-        <select id="cfState" required>
-          <option value="">Select State</option>
-          <option>Tamil Nadu</option><option>Karnataka</option><option>Kerala</option>
-          <option>Andhra Pradesh</option><option>Telangana</option><option>Maharashtra</option>
-          <option>Delhi</option><option>Gujarat</option><option>Rajasthan</option>
-          <option>West Bengal</option><option>Other</option>
-        </select>
-      </div>
-      <div class="payment-methods">
-        <label class="payment-method selected" id="pmRazorpay">
-          <input type="radio" name="payment" value="razorpay" checked onchange="selectPayment(this)">
-          <span class="payment-method-icon">💳</span>
-          <div class="payment-method-label"><strong>Pay Online</strong><span>UPI, Cards, Net Banking via Razorpay</span></div>
-        </label>
-        <label class="payment-method" id="pmCOD">
-          <input type="radio" name="payment" value="cod" onchange="selectPayment(this)">
-          <span class="payment-method-icon">💵</span>
-          <div class="payment-method-label"><strong>Cash on Delivery</strong><span>Pay when your order arrives</span></div>
-        </label>
-      </div>
-      <button type="submit" class="btn-place-order" id="placeOrderBtn">Place Order →</button>
-      <p class="razorpay-note">🔒 Powered by Razorpay · 256-bit SSL Secured</p>
-    </form>
-  </div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/919876543210?text=Hi%20Moringai!%20I%20want%20to%20know%20more%20about%20your%20products." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  💬
-  <span class="whatsapp-tooltip">Chat with us!</span>
-</a>
-
-<!-- MOBILE BUY BAR -->
-<div class="mobile-buy-bar" id="mobileBuyBar">
-  <button class="btn-cart" onclick="toggleCart()">🛒 Cart (<span id="mobileBuyCartCount">0</span>)</button>
-  <button class="btn-buynow" onclick="addToCart('Moringai Murungai Powder',899,'🌿','100g Pouch'); openCheckout();">Buy Now →</button>
-</div>
-
-<script>
-  // ─── STATE ───────────────────────────────────────────────
-  var cart = [];
-  var FREE_SHIPPING_THRESHOLD = 499;
-
-  // ─── CART FUNCTIONS ──────────────────────────────────────
-  function addToCart(name, price, emoji, variant) {
-    var existing = cart.find(function(i){ return i.name === name && i.variant === variant; });
-    if (existing) {
-      existing.qty += 1;
-    } else {
-      cart.push({ name: name, price: price, emoji: emoji, variant: variant, qty: 1 });
-    }
-    updateCartUI();
-    toggleCart(true);
-    showToast('✅ ' + name + ' added to cart!');
-  }
-
-  function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCartUI();
-  }
-
-  function changeQty(index, delta) {
-    cart[index].qty += delta;
-    if (cart[index].qty <= 0) {
-      cart.splice(index, 1);
-    }
-    updateCartUI();
-  }
-
-  function getCartTotal() {
-    return cart.reduce(function(sum, item){ return sum + item.price * item.qty; }, 0);
-  }
-
-  function getCartCount() {
-    return cart.reduce(function(sum, item){ return sum + item.qty; }, 0);
-  }
-
-  function updateCartUI() {
-    var total = getCartTotal();
-    var count = getCartCount();
-
-    // Update badges
-    document.getElementById('cartCount').textContent = count;
-    document.getElementById('mobileBuyCartCount').textContent = count;
-
-    // Progress bar
-    var pct = Math.min(100, Math.round((total / FREE_SHIPPING_THRESHOLD) * 100));
-    document.getElementById('cartProgressFill').style.width = pct + '%';
-    var remaining = FREE_SHIPPING_THRESHOLD - total;
-    if (remaining > 0) {
-      document.getElementById('cartProgressText').textContent = 'Add ₹' + remaining + ' more for free shipping!';
-      document.getElementById('cartShippingNote') && (document.getElementById('cartShippingNote').textContent = '🚚 ₹' + remaining + ' away from free shipping');
-    } else {
-      document.getElementById('cartProgressText').textContent = '🎉 Free shipping unlocked!';
-      document.getElementById('cartShippingNote') && (document.getElementById('cartShippingNote').textContent = '🚚 Free shipping applied!');
-    }
-
-    // Render items
-    var container = document.getElementById('cartItemsContainer');
-    var footer = document.getElementById('cartFooter');
-    if (cart.length === 0) {
-      container.innerHTML = '<div class="cart-empty"><span class="cart-empty-icon">🛒</span><p>Your cart is empty.<br>Add some moringa goodness!</p></div>';
-      footer.style.display = 'none';
-    } else {
-      var html = '';
-      cart.forEach(function(item, i) {
-        html += '<div class="cart-item">' +
-          '<div class="cart-item-img">' + item.emoji + '</div>' +
-          '<div class="cart-item-info">' +
-            '<div class="cart-item-name">' + item.name + '</div>' +
-            '<div class="cart-item-variant">' + item.variant + '</div>' +
-            '<div class="cart-item-footer">' +
-              '<span class="cart-item-price">₹' + (item.price * item.qty) + '</span>' +
-              '<div class="qty-controls">' +
-                '<button class="qty-btn" onclick="changeQty(' + i + ',-1)">−</button>' +
-                '<span class="qty-num">' + item.qty + '</span>' +
-                '<button class="qty-btn" onclick="changeQty(' + i + ',1)">+</button>' +
-              '</div>' +
-              '<button class="cart-remove" onclick="removeFromCart(' + i + ')" aria-label="Remove">🗑</button>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
-      });
-      container.innerHTML = html;
-      document.getElementById('cartSubtotal').textContent = '₹' + total;
-      footer.style.display = 'block';
-    }
-  }
-
-  function toggleCart(forceOpen) {
-    var sidebar = document.getElementById('cartSidebar');
-    var overlay = document.getElementById('cartOverlay');
-    var isOpen = sidebar.classList.contains('open');
-    if (forceOpen === true || !isOpen) {
-      sidebar.classList.add('open');
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    } else {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  }
-
-  // ─── CHECKOUT ────────────────────────────────────────────
-  function openCheckout() {
-    if (cart.length === 0) { showToast('⚠️ Your cart is empty!'); return; }
-    // Close cart first
-    document.getElementById('cartSidebar').classList.remove('open');
-    document.getElementById('cartOverlay').classList.remove('open');
-    document.body.style.overflow = 'hidden';
-
-    // Populate order summary
-    var total = getCartTotal();
-    var itemsHtml = cart.map(function(item){
-      return '<div class="order-row"><span>' + item.name + ' (' + item.variant + ') x' + item.qty + '</span><span>₹' + (item.price * item.qty) + '</span></div>';
-    }).join('');
-    document.getElementById('checkoutOrderItems').innerHTML = itemsHtml;
-    document.getElementById('checkoutShipping').textContent = total >= FREE_SHIPPING_THRESHOLD ? 'FREE' : '₹49';
-    var finalTotal = total >= FREE_SHIPPING_THRESHOLD ? total : total + 49;
-    document.getElementById('checkoutTotal').textContent = '₹' + finalTotal;
-
-    document.getElementById('checkoutOverlay').classList.add('open');
-  }
-
-  function closeCheckout() {
-    document.getElementById('checkoutOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function selectPayment(radio) {
-    document.querySelectorAll('.payment-method').forEach(function(el){ el.classList.remove('selected'); });
-    radio.closest('.payment-method').classList.add('selected');
-  }
-
-  function placeOrder(e) {
-    e.preventDefault();
-    var name = document.getElementById('cfName').value.trim();
-    var phone = document.getElementById('cfPhone').value.trim();
-    var selectedPayment = document.querySelector('input[name="payment"]:checked').value;
-
-    if (selectedPayment === 'razorpay') {
-      var razorpayKey = document.querySelector('meta[name="razorpay-key"]') ? document.querySelector('meta[name="razorpay-key"]').getAttribute('content') : '';
-      if (!razorpayKey) {
-        showToast('⚠️ Add your Razorpay key to enable online payments.');
-        return;
-      }
-      var total = getCartTotal();
-      var finalTotal = total >= FREE_SHIPPING_THRESHOLD ? total : total + 49;
-      var options = {
-        key: razorpayKey,
-        amount: finalTotal * 100,
-        currency: 'INR',
-        name: 'Moringai',
-        description: 'Pure Murungai Products',
-        handler: function(response) {
-          closeCheckout();
-          cart = [];
-          updateCartUI();
-          showToast('🎉 Order placed! Payment ID: ' + response.razorpay_payment_id);
-        },
-        prefill: { name: name, contact: phone, email: document.getElementById('cfEmail').value },
-        theme: { color: '#2d6a4f' }
-      };
-      try {
-        var rzp = new Razorpay(options);
-        rzp.open();
-      } catch(err) {
-        showToast('⚠️ Payment gateway error. Please try COD.');
-      }
-    } else {
-      // COD
-      closeCheckout();
-      cart = [];
-      updateCartUI();
-      showToast('🎉 Order placed! COD — we\'ll deliver in 2-5 days.');
-    }
-  }
-
-  // ─── PRODUCT FILTER ──────────────────────────────────────
-  function filterProducts(category, btn) {
-    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
-    document.querySelectorAll('.product-card').forEach(function(card){
-   
+      <button onclick="toggleSear

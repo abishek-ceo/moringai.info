@@ -67,6 +67,17 @@
   .hamburger { display: none; flex-direction: column; gap: 5px; background: none; padding: 8px; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
 
+  /* SEARCH BAR */
+  .search-bar-wrapper { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999; background: white; border-bottom: 2px solid var(--green-pale); padding: 14px 5%; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+  .search-bar-wrapper.open { display: block; }
+  .search-bar-inner { max-width: 680px; margin: 0 auto; display: flex; gap: 10px; align-items: center; }
+  .search-input { flex: 1; padding: 12px 20px; border-radius: 50px; border: 2px solid var(--border); font-size: 15px; font-family: 'Inter', sans-serif; outline: none; transition: var(--transition); }
+  .search-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,106,79,0.1); }
+  .search-close-btn { background: none; font-size: 20px; color: var(--text-muted); padding: 8px; border-radius: 8px; }
+  .search-results-preview { margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .search-result-chip { background: var(--green-xpale); color: var(--green); border-radius: 50px; padding: 5px 14px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--green-pale); transition: var(--transition); }
+  .search-result-chip:hover { background: var(--green); color: white; }
+
   /* HERO */
   .hero { background: linear-gradient(135deg, #0a3622 0%, #1b4332 40%, #2d6a4f 100%); min-height: 92vh; display: flex; align-items: center; padding: 80px 5%; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
@@ -121,13 +132,13 @@
   .badge-sale { background: #e63946; color: white; }
   .product-wishlist { position: absolute; top: 16px; right: 16px; z-index: 2; background: white; border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: var(--transition); }
   .product-wishlist:hover { background: #ffe0e0; border-color: #e63946; }
-  .product-img { height: 220px; background: var(--green-xpale); display: flex; align-items: center; justify-content: center; font-size: 80px; transition: var(--transition); }
+  .product-img { height: 220px; background: var(--green-xpale); display: flex; align-items: center; justify-content: center; font-size: 80px; transition: var(--transition); position: relative; }
   .product-card:hover .product-img { background: var(--green-pale); }
   .product-info { padding: 20px; }
   .product-category { font-size: 11px; font-weight: 600; color: var(--green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
   .product-name { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 6px; line-height: 1.35; }
-  .product-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
-  .product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; }
+  .product-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; }
+  .product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
   .stars { color: #f4a261; font-size: 13px; }
   .rating-count { font-size: 12px; color: var(--text-muted); }
   .product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
@@ -137,9 +148,25 @@
   .price-save { font-size: 11px; color: #e63946; font-weight: 700; }
   .add-to-cart { background: var(--green); color: white; padding: 10px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 6px; }
   .add-to-cart:hover { background: var(--green-light); transform: scale(1.04); }
-  .product-variants { display: flex; gap: 8px; margin-bottom: 14px; }
+  .product-variants { display: flex; gap: 8px; margin-bottom: 12px; }
   .variant-btn { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; border: 1.5px solid var(--border); color: var(--text-muted); background: white; transition: var(--transition); }
   .variant-btn.active, .variant-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-xpale); }
+
+  /* STOCK INDICATOR */
+  .stock-indicator { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .stock-bar-track { flex: 1; height: 6px; background: #f0f0f0; border-radius: 50px; overflow: hidden; }
+  .stock-bar-fill { height: 100%; border-radius: 50px; }
+  .stock-bar-fill.high { background: var(--green); }
+  .stock-bar-fill.medium { background: #f4a261; }
+  .stock-bar-fill.low { background: #e63946; }
+  .stock-text { font-size: 11px; font-weight: 700; }
+  .stock-text.low { color: #e63946; }
+  .stock-text.medium { color: #f4a261; }
+  .stock-text.high { color: var(--green); }
+
+  /* URGENCY TIMER */
+  .urgency-timer { background: #fff5f0; border: 1px solid #ffd4c2; border-radius: 8px; padding: 7px 12px; font-size: 12px; font-weight: 600; color: #c0392b; display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .urgency-timer span.timer-val { font-family: monospace; font-size: 13px; letter-spacing: 1px; }
 
   /* WHY US */
   #why { padding: 96px 5%; background: white; }
@@ -242,6 +269,13 @@
   .cart-header h3 { font-size: 20px; color: var(--dark); }
   .cart-close { background: none; font-size: 22px; color: var(--text-muted); padding: 4px 8px; border-radius: 8px; }
   .cart-close:hover { background: var(--border); }
+
+  /* CART PROGRESS BAR */
+  .cart-progress { padding: 12px 20px 0; }
+  .cart-progress-bar-track { height: 8px; background: #f0f0f0; border-radius: 50px; overflow: hidden; margin-top: 6px; }
+  .cart-progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--green-light), var(--green)); border-radius: 50px; transition: width 0.5s ease; }
+  .cart-progress-text { font-size: 12px; font-weight: 600; color: var(--green); }
+
   .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
   .cart-empty { text-align: center; padding: 60px 20px; }
   .cart-empty-icon { font-size: 60px; margin-bottom: 16px; display: block; }
@@ -258,6 +292,16 @@
   .qty-btn:hover { background: var(--green); color: white; }
   .qty-num { font-size: 14px; font-weight: 600; min-width: 20px; text-align: center; }
   .cart-remove { background: none; color: #e63946; font-size: 14px; padding: 4px; border: none; cursor: pointer; }
+
+  /* BUNDLE UPSELL IN CART */
+  .cart-upsell { margin: 12px 0; background: var(--green-xpale); border: 1.5px dashed var(--green-pale); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+  .cart-upsell-emoji { font-size: 28px; }
+  .cart-upsell-text { flex: 1; }
+  .cart-upsell-text strong { display: block; font-size: 13px; color: var(--dark); margin-bottom: 2px; }
+  .cart-upsell-text span { font-size: 11px; color: var(--text-muted); }
+  .cart-upsell-btn { background: var(--green); color: white; padding: 7px 14px; border-radius: 50px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap; transition: var(--transition); }
+  .cart-upsell-btn:hover { background: var(--green-light); }
+
   .cart-footer { padding: 20px 24px; border-top: 1px solid var(--border); }
   .cart-subtotal { display: flex; justify-content: space-between; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
   .cart-shipping-note { font-size: 12px; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; }
@@ -298,6 +342,17 @@
   /* TOAST */
   .toast { position: fixed; bottom: 24px; right: 24px; z-index: 9999; background: var(--dark); color: white; padding: 14px 20px; border-radius: 12px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 10px; transform: translateY(80px); opacity: 0; transition: var(--transition); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
   .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* WHATSAPP FLOAT */
+  .whatsapp-float { position: fixed; bottom: 90px; right: 24px; z-index: 9998; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); text-decoration: none; }
+  .whatsapp-float:hover { background: #20ba58; transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
+  .whatsapp-tooltip { position: absolute; right: 68px; background: var(--dark); color: white; font-size: 12px; font-weight: 600; white-space: nowrap; padding: 6px 12px; border-radius: 8px; opacity: 0; pointer-events: none; transition: var(--transition); }
+  .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+  /* MOBILE FLOATING BUY BUTTON */
+  .mobile-buy-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1500; background: white; border-top: 2px solid var(--border); padding: 12px 20px; gap: 12px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
+  .mobile-buy-bar .btn-cart { flex: 1; padding: 14px; background: var(--green-pale); color: var(--green); border-radius: 12px; font-size: 15px; font-weight: 700; border: 2px solid var(--green); }
+  .mobile-buy-bar .btn-buynow { flex: 2; padding: 14px; background: var(--green); color: white; border-radius: 12px; font-size: 15px; font-weight: 700; border: none; }
 
   /* FOOTER */
   footer { background: var(--dark); color: rgba(255,255,255,0.75); padding: 80px 5% 32px; }
@@ -345,6 +400,9 @@
     .form-row { grid-template-columns: 1fr; }
     .cform-row { grid-template-columns: 1fr; }
     .checkout-modal { margin: 0 16px; padding: 28px 20px; }
+    .mobile-buy-bar { display: flex; }
+    .whatsapp-float { bottom: 80px; }
+    footer { padding-bottom: 80px; }
   }
   @media(max-width: 480px) {
     .trust-bar-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -392,6 +450,15 @@
     </div>
   </div>
 </header>
+
+<!-- REAL SEARCH BAR -->
+<div class="search-bar-wrapper" id="searchBarWrapper">
+  <div class="search-bar-inner">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search for moringa powder, capsules, oil, tea..." oninput="liveSearch(this.value)" onkeydown="if(event.key==='Escape')toggleSearch()">
+    <button class="search-close-btn" onclick="toggleSearch()">✕</button>
+  </div>
+  <div class="search-results-preview" id="searchResultsPreview"></div>
+</div>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#products" onclick="toggleMenu()">Shop</a>
@@ -442,6 +509,7 @@
     <div class="trust-item"><span>🌱</span> 100% Organic &amp; Vegan</div>
     <div class="trust-item"><span>↩️</span> 30-Day Return Policy</div>
     <div class="trust-item"><span>🔒</span> Secure Razorpay Payment</div>
+    <div class="trust-item"><span>💵</span> Cash on Delivery Available</div>
   </div>
 </div>
 
@@ -461,7 +529,9 @@
       <button class="filter-btn" onclick="filterProducts('combo', this)">Combos</button>
     </div>
     <div class="products-grid" id="productsGrid">
-      <div class="product-card fade-in" data-category="powder">
+
+      <!-- Product 1 -->
+      <div class="product-card fade-in" data-category="powder" data-name="Moringai Murungai Powder">
         <span class="product-badge badge-bestseller">Bestseller</span>
         <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
         <div class="product-img">🌿</div>
@@ -469,7 +539,12 @@
           <div class="product-category">Powder</div>
           <div class="product-name">Moringai Murungai Powder</div>
           <div class="product-desc">Stone-ground from fresh moringa leaves. No additives, no fillers. Pure nutrition in every spoon.</div>
-          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(284)</span></div>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(284 reviews)</span></div>
+          <div class="stock-indicator">
+            <div class="stock-bar-track"><div class="stock-bar-fill low" style="width:18%"></div></div>
+            <span class="stock-text low">⚡ Only 9 left!</span>
+          </div>
+          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="7200"></span></div>
           <div class="product-variants">
             <button class="variant-btn active" onclick="selectVariant(this,'100g Pouch')">100g</button>
             <button class="variant-btn" onclick="selectVariant(this,'250g Pouch')">250g</button>
@@ -485,7 +560,9 @@
           </div>
         </div>
       </div>
-      <div class="product-card fade-in" data-category="capsules">
+
+      <!-- Product 2 -->
+      <div class="product-card fade-in" data-category="capsules" data-name="Moringa Veg Capsules">
         <span class="product-badge badge-new">New</span>
         <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
         <div class="product-img">💊</div>
@@ -493,7 +570,11 @@
           <div class="product-category">Capsules</div>
           <div class="product-name">Moringa Veg Capsules</div>
           <div class="product-desc">60 veg capsules with 500mg pure moringa each. No gelatin, no fillers. Clean label.</div>
-          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(156)</span></div>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(156 reviews)</span></div>
+          <div class="stock-indicator">
+            <div class="stock-bar-track"><div class="stock-bar-fill medium" style="width:45%"></div></div>
+            <span class="stock-text medium">🟡 Limited stock</span>
+          </div>
           <div class="product-variants">
             <button class="variant-btn active" onclick="selectVariant(this,'60 Caps')">60 Caps</button>
             <button class="variant-btn" onclick="selectVariant(this,'120 Caps')">120 Caps</button>
@@ -508,14 +589,20 @@
           </div>
         </div>
       </div>
-      <div class="product-card fade-in" data-category="oil">
+
+      <!-- Product 3 -->
+      <div class="product-card fade-in" data-category="oil" data-name="Cold-Pressed Moringa Oil">
         <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
         <div class="product-img">🫙</div>
         <div class="product-info">
           <div class="product-category">Oil</div>
           <div class="product-name">Cold-Pressed Moringa Oil</div>
           <div class="product-desc">Multi-use moringa oil for cooking, hair care and skincare. Single cold-press, unrefined.</div>
-          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(98)</span></div>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(98 reviews)</span></div>
+          <div class="stock-indicator">
+            <div class="stock-bar-track"><div class="stock-bar-fill high" style="width:70%"></div></div>
+            <span class="stock-text high">✅ In stock</span>
+          </div>
           <div class="product-variants">
             <button class="variant-btn active" onclick="selectVariant(this,'50ml')">50ml</button>
             <button class="variant-btn" onclick="selectVariant(this,'100ml')">100ml</button>
@@ -530,14 +617,20 @@
           </div>
         </div>
       </div>
-      <div class="product-card fade-in" data-category="tea">
+
+      <!-- Product 4 -->
+      <div class="product-card fade-in" data-category="tea" data-name="Moringa Green Tea Bags">
         <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
         <div class="product-img">🍵</div>
         <div class="product-info">
           <div class="product-category">Tea</div>
           <div class="product-name">Moringa Green Tea Bags</div>
           <div class="product-desc">25 pyramid tea bags blending moringa with Darjeeling green tea. Energizing and antioxidant-rich.</div>
-          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(201)</span></div>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(201 reviews)</span></div>
+          <div class="stock-indicator">
+            <div class="stock-bar-track"><div class="stock-bar-fill high" style="width:80%"></div></div>
+            <span class="stock-text high">✅ In stock</span>
+          </div>
           <div class="product-variants">
             <button class="variant-btn active" onclick="selectVariant(this,'25 Bags')">25 Bags</button>
             <button class="variant-btn" onclick="selectVariant(this,'50 Bags')">50 Bags</button>
@@ -552,7 +645,9 @@
           </div>
         </div>
       </div>
-      <div class="product-card fade-in" data-category="powder">
+
+      <!-- Product 5 -->
+      <div class="product-card fade-in" data-category="powder" data-name="Moringa Seed Powder">
         <span class="product-badge badge-sale">Sale</span>
         <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
         <div class="product-img">🌾</div>
@@ -560,7 +655,12 @@
           <div class="product-category">Powder</div>
           <div class="product-name">Moringa Seed Powder</div>
           <div class="product-desc">Rare moringa seed powder for blood sugar support and detox. Traditionally used in Ayurveda.</div>
-          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(63)</span></div>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(63 reviews)</span></div>
+          <div class="stock-indicator">
+            <div class="stock-bar-track"><div class="stock-bar-fill low" style="width:12%"></div></div>
+            <span class="stock-text low">⚡ Only 6 left!</span>
+          </div>
+          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="10800"></span></div>
           <div class="product-variants">
             <button class="variant-btn active" onclick="selectVariant(this,'100g')">100g</button>
             <button class="variant-btn" onclick="selectVariant(this,'200g')">200g</button>
@@ -575,7 +675,9 @@
           </div>
         </div>
       </div>
-      <div class="product-card fade-in" data-category="combo">
+
+      <!-- Product 6 - Combo -->
+      <div class="product-card fade-in" data-category="combo" data-name="Wellness Starter Pack">
         <span class="product-badge badge-bestseller">Best Value</span>
         <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
         <div class="product-img">🎁</div>
@@ -583,7 +685,12 @@
           <div class="product-category">Combo</div>
           <div class="product-name">Wellness Starter Pack</div>
           <div class="product-desc">Powder + Capsules + Tea. Perfect for beginners. Huge savings on our best trio.</div>
-          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(342)</span></div>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(342 reviews)</span></div>
+          <div class="stock-indicator">
+            <div class="stock-bar-track"><div class="stock-bar-fill medium" style="width:30%"></div></div>
+            <span class="stock-text medium">🟡 Selling fast!</span>
+          </div>
+          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="5400"></span></div>
           <div class="product-variants">
             <button class="variant-btn active">Starter</button>
             <button class="variant-btn" onclick="selectVariant(this,'Premium')">Premium</button>
@@ -598,6 +705,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -710,315 +818,4 @@
       <p>Whether it's a product question, wholesale inquiry, or just a desire to connect — our team responds within 24 hours.</p>
       <div class="contact-items">
         <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><strong>Email</strong><span>moringa.info@gmail.com</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📱</div><div class="contact-item-text"><strong>WhatsApp</strong><span>+91 95144 99924</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text"><strong>Address</strong><span>Tiruvannamalai, Tamil Nadu, India</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">🕐</div><div class="contact-item-text"><strong>Support Hours</strong><span>Mon–Sat, 9 AM – 6 PM IST</span></div></div>
-      </div>
-    </div>
-    <div class="contact-form fade-in">
-      <h3 style="font-size:20px;color:var(--dark);margin-bottom:24px;">Send us a Message</h3>
-      <form onsubmit="submitContactForm(event)">
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="Your name" required></div>
-          <div class="form-group"><label>Phone</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
-        </div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com" required></div>
-        <div class="form-group"><label>Subject</label><select><option value="">Select a topic</option><option>Product Question</option><option>Order Issue</option><option>Wholesale Inquiry</option><option>Partnership</option><option>Other</option></select></div>
-        <div class="form-group"><label>Message</label><textarea placeholder="Tell us how we can help..." required></textarea></div>
-        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:14px;">Send Message 📨</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo"><div class="logo-icon">🌿</div><span class="logo-text">Moringai</span></div>
-        <p>India's most trusted moringa brand. Sourced from Tamil Nadu's organic farms. NABL-certified, 100% pure, delivered across India.</p>
-        <div class="footer-social">
-          <a href="#" class="social-btn">📸</a>
-          <a href="#" class="social-btn">▶️</a>
-          <a href="#" class="social-btn">📘</a>
-          <a href="https://wa.me/919514499924" class="social-btn" target="_blank">💬</a>
-        </div>
-      </div>
-      <div class="footer-col"><h4>Shop</h4><ul><li><a href="#products">Moringa Powder</a></li><li><a href="#products">Moringa Capsules</a></li><li><a href="#products">Cold-Pressed Oil</a></li><li><a href="#products">Moringa Tea</a></li><li><a href="#products">Combo Packs</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="#about">Our Story</a></li><li><a href="#why">Why Moringai</a></li><li><a href="#blog">Blog</a></li><li><a href="#contact">Wholesale</a></li><li><a href="/admin">Admin Panel</a></li></ul></div>
-      <div class="footer-col"><h4>Support</h4><ul><li><a href="#contact">Contact Us</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Return Policy</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Moringai. All rights reserved. Made with 💚 in Tamil Nadu, India.</p>
-      <div class="footer-badges">
-        <span class="footer-badge">🔒 SSL Secured</span>
-        <span class="footer-badge">🌿 NABL Certified</span>
-        <span class="footer-badge">💳 Razorpay</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- CART SIDEBAR -->
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-  <div class="cart-header">
-    <h3>🛒 Your Cart</h3>
-    <button class="cart-close" onclick="toggleCart()">✕</button>
-  </div>
-  <div class="cart-items" id="cartItems">
-    <div class="cart-empty"><span class="cart-empty-icon">🛒</span><p>Your cart is empty.<br>Add some moringa goodness!</p></div>
-  </div>
-  <div class="cart-footer" id="cartFooter" style="display:none;">
-    <div class="cart-subtotal"><span>Subtotal</span><span id="cartTotal">₹0</span></div>
-    <div class="cart-shipping-note" id="shippingNote">🚚 Add ₹499 more for free shipping</div>
-    <button class="btn-checkout" onclick="openCheckout()">Proceed to Checkout →</button>
-  </div>
-</div>
-
-<!-- CHECKOUT MODAL -->
-<div class="checkout-overlay" id="checkoutOverlay">
-  <div class="checkout-modal">
-    <button class="checkout-close" onclick="closeCheckout()">✕</button>
-    <h3>🌿 Complete Your Order</h3>
-    <p class="subtitle">Secure checkout powered by Razorpay</p>
-    <div class="order-summary" id="checkoutSummary"></div>
-    <form onsubmit="placeOrder(event)">
-      <div class="cform-row">
-        <div class="cform-group"><label>Full Name *</label><input type="text" id="cf-name" placeholder="Your full name" required></div>
-        <div class="cform-group"><label>Phone *</label><input type="tel" id="cf-phone" placeholder="+91 XXXXX XXXXX" required></div>
-      </div>
-      <div class="cform-group"><label>Email</label><input type="email" id="cf-email" placeholder="you@example.com"></div>
-      <div class="cform-group"><label>Delivery Address *</label><input type="text" id="cf-address" placeholder="House No., Street, Area" required></div>
-      <div class="cform-row">
-        <div class="cform-group"><label>City *</label><input type="text" id="cf-city" placeholder="Chennai" required></div>
-        <div class="cform-group"><label>Pincode *</label><input type="text" id="cf-pin" placeholder="600001" required></div>
-      </div>
-      <div class="cform-group"><label>State</label><select id="cf-state"><option>Tamil Nadu</option><option>Andhra Pradesh</option><option>Karnataka</option><option>Kerala</option><option>Telangana</option><option>Maharashtra</option><option>Delhi</option><option>Gujarat</option><option>Rajasthan</option><option>Uttar Pradesh</option><option>West Bengal</option><option>Other</option></select></div>
-      <p style="font-size:13px;font-weight:600;color:var(--dark);margin-bottom:12px;">Payment Method</p>
-      <div class="payment-methods">
-        <label class="payment-method selected" id="pm-razorpay">
-          <input type="radio" name="paymethod" value="razorpay" checked onchange="selectPayMethod(this.parentElement)">
-          <span class="payment-method-icon">💳</span>
-          <div class="payment-method-label"><strong>UPI / Cards / Net Banking</strong><span>GPay, PhonePe, Paytm, Cards, EMI</span></div>
-        </label>
-        <label class="payment-method" id="pm-cod">
-          <input type="radio" name="paymethod" value="cod" onchange="selectPayMethod(this.parentElement)">
-          <span class="payment-method-icon">💵</span>
-          <div class="payment-method-label"><strong>Cash on Delivery</strong><span>Pay when your order arrives</span></div>
-        </label>
-      </div>
-      <button type="submit" class="btn-place-order" id="placeOrderBtn">Place Order →</button>
-      <p class="razorpay-note">🔒 Secured by Razorpay · SSL Encrypted · PCI DSS Compliant</p>
-    </form>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script src="/checkout.js"></script>
-<script>
-  var cart = [];
-
-  // Load Razorpay key from server
-  fetch('/api/settings').then(r=>r.json()).then(function(s){
-    // Settings loaded — key injected by server via meta tag
-  }).catch(function(){});
-
-  function addToCart(name, price, emoji, variant) {
-    var existing = cart.find(function(i){ return i.name === name && i.variant === variant; });
-    if (existing) { existing.qty++; }
-    else { cart.push({ name: name, price: price, emoji: emoji, variant: variant, qty: 1 }); }
-    updateCartUI();
-    showToast('✅ ' + name + ' added to cart!');
-    openCart();
-  }
-
-  function removeFromCart(index) { cart.splice(index, 1); updateCartUI(); }
-
-  function changeQty(index, delta) {
-    cart[index].qty += delta;
-    if (cart[index].qty <= 0) cart.splice(index, 1);
-    updateCartUI();
-  }
-
-  function updateCartUI() {
-    var count = cart.reduce(function(s,i){ return s + i.qty; }, 0);
-    document.getElementById('cartCount').textContent = count;
-    var total = cart.reduce(function(s,i){ return s + i.price * i.qty; }, 0);
-    document.getElementById('cartTotal').textContent = '₹' + total.toLocaleString('en-IN');
-    var container = document.getElementById('cartItems');
-    var footer = document.getElementById('cartFooter');
-    if (cart.length === 0) {
-      container.innerHTML = '<div class="cart-empty"><span class="cart-empty-icon">🛒</span><p>Your cart is empty.<br>Add some moringa goodness!</p></div>';
-      footer.style.display = 'none';
-    } else {
-      footer.style.display = 'block';
-      container.innerHTML = cart.map(function(item, i) {
-        return '<div class="cart-item"><div class="cart-item-img">' + item.emoji + '</div><div class="cart-item-info"><div class="cart-item-name">' + item.name + '</div><div class="cart-item-variant">' + item.variant + '</div><div class="cart-item-footer"><span class="cart-item-price">₹' + (item.price * item.qty).toLocaleString('en-IN') + '</span><div class="qty-controls"><button class="qty-btn" onclick="changeQty(' + i + ',-1)">−</button><span class="qty-num">' + item.qty + '</span><button class="qty-btn" onclick="changeQty(' + i + ',1)">+</button><button class="cart-remove" onclick="removeFromCart(' + i + ')">🗑</button></div></div></div></div>';
-      }).join('');
-    }
-    var note = document.getElementById('shippingNote');
-    if (note) note.textContent = total >= 499 ? '✅ Free shipping on this order!' : '🚚 Add ₹' + (499 - total) + ' more for free shipping';
-  }
-
-  function toggleCart() {
-    document.getElementById('cartSidebar').classList.toggle('open');
-    document.getElementById('cartOverlay').classList.toggle('open');
-  }
-  function openCart() {
-    document.getElementById('cartSidebar').classList.add('open');
-    document.getElementById('cartOverlay').classList.add('open');
-  }
-
-  function openCheckout() {
-    if (cart.length === 0) { showToast('⚠️ Your cart is empty!'); return; }
-    toggleCart();
-    var total = cart.reduce(function(s,i){ return s + i.price * i.qty; }, 0);
-    var shipping = total >= 499 ? 0 : 49;
-    var summary = '<h4>Order Summary</h4>';
-    cart.forEach(function(item){
-      summary += '<div class="order-row"><span>' + item.name + ' x' + item.qty + '</span><span>₹' + (item.price * item.qty).toLocaleString('en-IN') + '</span></div>';
-    });
-    summary += '<div class="order-row"><span>Shipping</span><span>' + (shipping === 0 ? 'FREE' : '₹' + shipping) + '</span></div>';
-    summary += '<div class="order-row total"><span>Total</span><span>₹' + (total + shipping).toLocaleString('en-IN') + '</span></div>';
-    document.getElementById('checkoutSummary').innerHTML = summary;
-    document.getElementById('checkoutOverlay').classList.add('open');
-  }
-  function closeCheckout() {
-    document.getElementById('checkoutOverlay').classList.remove('open');
-  }
-
-  function selectPayMethod(el) {
-    document.querySelectorAll('.payment-method').forEach(function(m){ m.classList.remove('selected'); });
-    el.classList.add('selected');
-  }
-
-  async function placeOrder(e) {
-    e.preventDefault();
-    var btn = document.getElementById('placeOrderBtn');
-    var name = document.getElementById('cf-name').value.trim();
-    var phone = document.getElementById('cf-phone').value.trim();
-    var email = document.getElementById('cf-email').value.trim();
-    var address = document.getElementById('cf-address').value.trim();
-    var city = document.getElementById('cf-city').value.trim();
-    var pin = document.getElementById('cf-pin').value.trim();
-    var state = document.getElementById('cf-state').value;
-    var paymethod = document.querySelector('input[name="paymethod"]:checked').value;
-
-    if (!name || !phone || !address || !city || !pin) {
-      showToast('⚠️ Please fill all required fields'); return;
-    }
-
-    // Format items correctly for backend
-    var items = cart.map(function(i){ return { name: i.name, qty: i.qty, variant: i.variant }; });
-    var customerData = {
-      customer: name,
-      email: email,
-      phone: phone,
-      address: address + ', ' + city + ', ' + state + ' - ' + pin,
-      city: city,
-      items: items
-    };
-
-    btn.disabled = true;
-    btn.textContent = 'Processing...';
-
-    try {
-      if (paymethod === 'razorpay') {
-        // Use Razorpay payment flow
-        var orderData = await startRazorpayPayment(items, customerData);
-        handleOrderSuccess(orderData.order);
-      } else {
-        // Cash on Delivery — post directly to orders API
-        var res = await fetch('/api/orders', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...customerData, payment: { method: 'cod' } })
-        });
-        var data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Order failed');
-        handleOrderSuccess(data.order);
-      }
-    } catch(err) {
-      showToast('❌ ' + (err.message || 'Something went wrong. Please try again.'));
-      btn.disabled = false;
-      btn.textContent = 'Place Order →';
-    }
-  }
-
-  function handleOrderSuccess(order) {
-    cart = [];
-    updateCartUI();
-    closeCheckout();
-    showToast('🎉 Order placed! ID: ' + order.id);
-    document.getElementById('placeOrderBtn').disabled = false;
-    document.getElementById('placeOrderBtn').textContent = 'Place Order →';
-    document.querySelector('#contact form') && document.querySelector('#contact form').reset();
-  }
-
-  function filterProducts(cat, btn) {
-    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
-    document.querySelectorAll('.product-card').forEach(function(card){
-      card.style.display = (cat === 'all' || card.dataset.category === cat) ? 'block' : 'none';
-    });
-  }
-
-  function selectVariant(btn, variant) {
-    var card = btn.closest('.product-card');
-    card.querySelectorAll('.variant-btn').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
-  }
-
-  function toggleWishlist(btn) {
-    btn.textContent = btn.textContent.trim() === '🤍' ? '❤️' : '🤍';
-    showToast(btn.textContent.trim() === '❤️' ? '❤️ Added to wishlist!' : '💔 Removed from wishlist');
-  }
-
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-
-  function toggleSearch() {
-    var q = prompt('Search products:');
-    if (!q) return;
-    var found = 0;
-    document.querySelectorAll('.product-card').forEach(function(card){
-      var name = card.querySelector('.product-name').textContent.toLowerCase();
-      if (name.includes(q.toLowerCase())) { card.style.display = 'block'; found++; }
-      else { card.style.display = 'none'; }
-    });
-    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
-    showToast(found + ' result(s) found for "' + q + '"');
-  }
-
-  function showToast(msg) {
-    var t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    if (t._timer) clearTimeout(t._timer);
-    t._timer = setTimeout(function(){ t.classList.remove('show'); }, 3500);
-  }
-
-  function submitContactForm(e) {
-    e.preventDefault();
-    showToast('✅ Message sent! We\'ll reply within 24 hours.');
-    e.target.reset();
-  }
-
-  // Scroll animations
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
-
-  // Active nav on scroll
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('nav a');
-  window.addEventListener('scroll', function(){
-    var current = '';
-    sections.forEach(function(s){ if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-    navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
-  }, { passive: true });
-</script>
-</body>
-</html>
+        <div class="contact-item"><div class="cont

@@ -4,11 +4,85 @@
   link.rel = 'stylesheet';
   link.href = 'fix.css';
   document.head.appendChild(link);
+
+  // Inject card-qty styles
+  var style = document.createElement('style');
+  style.textContent = [
+    '.card-qty-ctrl { display:flex; align-items:center; gap:0; border-radius:50px; overflow:hidden; border:2px solid #2d6a4f; background:#fff; }',
+    '.card-qty-ctrl button { width:32px; height:36px; background:#2d6a4f; color:#fff; font-size:18px; font-weight:700; border:none; cursor:pointer; line-height:1; transition:background 0.2s; }',
+    '.card-qty-ctrl button:hover { background:#40916c; }',
+    '.card-qty-ctrl .cq-num { min-width:32px; text-align:center; font-size:15px; font-weight:700; color:#2d6a4f; font-family:Inter,sans-serif; }'
+  ].join('');
+  document.head.appendChild(style);
 })();
 
 // ─── STATE ───────────────────────────────────────────────
 var cart = [];
 var FREE_SHIPPING_THRESHOLD = 499;
+
+// ─── CARD QTY HELPERS ────────────────────────────────────
+function getCardQty(name, variant) {
+  var item = cart.find(function(i){ return i.name === name && i.variant === variant; });
+  return item ? item.qty : 0;
+}
+
+function updateCardButton(name, variant) {
+  var qty = getCardQty(name, variant);
+  // Find the footer of the matching product card
+  var cards = document.querySelectorAll('.product-card');
+  cards.forEach(function(card) {
+    if ((card.dataset.name || '') !== name) return;
+    var footer = card.querySelector('.product-footer');
+    if (!footer) return;
+    var btn = footer.querySelector('.add-to-cart, .card-qty-ctrl');
+    if (!btn) return;
+    if (qty === 0) {
+      // Restore Add button
+      var safeName = name.replace(/'/g, "\\'");
+      btn.outerHTML = '<button class="add-to-cart" onclick="addToCart(\'' + safeName + '\','+getCardPrice(card)+',\''+getCardEmoji(card)+'\',getActiveVariant(this))">\uD83D\uDED2 Add</button>';
+    } else {
+      // Show qty control
+      var safeName = name.replace(/'/g, "\\'");
+      var ctrl = '<div class="card-qty-ctrl">' +
+        '<button onclick="cardDecrement(this,\'' + safeName + '\',\'' + variant.replace(/'/g,"\\'")
+        + '\')">\u2212</button>' +
+        '<span class="cq-num">' + qty + '</span>' +
+        '<button onclick="cardIncrement(this,\'' + safeName + '\','+getCardPrice(card)+',\''+getCardEmoji(card)+'\',\'' + variant.replace(/'/g,"\\'")
+        + '\')">+</button>' +
+        '</div>';
+      btn.outerHTML = ctrl;
+    }
+  });
+}
+
+function getCardPrice(card) {
+  var el = card.querySelector('.price-current');
+  if (!el) return 0;
+  return parseInt(el.textContent.replace(/[^0-9]/g,''), 10) || 0;
+}
+
+function getCardEmoji(card) {
+  var el = card.querySelector('.product-img');
+  return el ? el.textContent.trim() : '🌿';
+}
+
+function cardIncrement(btn, name, price, emoji, variant) {
+  var item = cart.find(function(i){ return i.name === name && i.variant === variant; });
+  if (item) { item.qty += 1; }
+  else { cart.push({ name: name, price: price, emoji: emoji, variant: variant, qty: 1 }); }
+  updateCartUI();
+  updateCardButton(name, variant);
+  showToast('✅ ' + name + ' added!');
+}
+
+function cardDecrement(btn, name, variant) {
+  var idx = cart.findIndex(function(i){ return i.name === name && i.variant === variant; });
+  if (idx === -1) return;
+  cart[idx].qty -= 1;
+  if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  updateCartUI();
+  updateCardButton(name, variant);
+}
 
 // ─── CART ────────────────────────────────────────────────
 function addToCart(name, price, emoji, variant) {
@@ -16,18 +90,23 @@ function addToCart(name, price, emoji, variant) {
   if (existing) { existing.qty += 1; }
   else { cart.push({ name: name, price: price, emoji: emoji, variant: variant, qty: 1 }); }
   updateCartUI();
+  updateCardButton(name, variant);
   showToast('✅ ' + name + ' added to cart!');
 }
 
 function removeFromCart(index) {
+  var item = cart[index];
   cart.splice(index, 1);
   updateCartUI();
+  if (item) updateCardButton(item.name, item.variant);
 }
 
 function changeQty(index, delta) {
+  var item = cart[index];
   cart[index].qty += delta;
   if (cart[index].qty <= 0) cart.splice(index, 1);
   updateCartUI();
+  if (item) updateCardButton(item.name, item.variant);
 }
 
 function getCartTotal() {
@@ -171,6 +250,14 @@ function placeOrder(e) {
     closeCheckout();
     cart = [];
     updateCartUI();
+    // Reset all card buttons after order
+    document.querySelectorAll('.card-qty-ctrl').forEach(function(ctrl) {
+      var card = ctrl.closest('.product-card');
+      if (!card) return;
+      var name = card.dataset.name || '';
+      var safeName = name.replace(/'/g, "\\'");
+      ctrl.outerHTML = '<button class="add-to-cart" onclick="addToCart(\'' + safeName + '\','+getCardPrice(card)+',\''+getCardEmoji(card)+'\',getActiveVariant(this))">🛒 Add</button>';
+    });
     showToast('🎉 Order placed! COD — we\'ll deliver in 2-5 days.');
   }
 }

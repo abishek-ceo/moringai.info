@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moringai Admin</title>
+<style>
+  :root {
+    --green:#2d6a4f; --green-light:#40916c; --green-pale:#d8f3dc;
+    --green-xpale:#f0faf2; --dark:#1a1a2e; --text:#2c2c2c;
+    --muted:#666; --border:#e8f5e9; --white:#fff; --off:#fafdf9;
+    --red:#e63946; --gold:#f4a261;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',sans-serif;background:var(--off);color:var(--text);min-height:100vh}
+  a{text-decoration:none;color:inherit}
+  button{cursor:pointer;border:none;font-family:inherit}
+
+  /* ── LOGIN ── */
+  #loginScreen{
+    position:fixed;inset:0;background:linear-gradient(135deg,#0a3622,#2d6a4f);
+    display:flex;align-items:center;justify-content:center;z-index:9999;
+  }
+  .login-box{
+    background:#fff;border-radius:24px;padding:48px 40px;width:100%;max-width:400px;
+    box-shadow:0 24px 80px rgba(0,0,0,0.25);text-align:center;
+  }
+  .login-logo{font-size:48px;margin-bottom:12px}
+  .login-box h1{font-size:26px;color:var(--dark);margin-bottom:4px}
+  .login-box p{font-size:14px;color:var(--muted);margin-bottom:32px}
+  .login-box input{
+    width:100%;padding:13px 16px;border-radius:10px;border:2px solid var(--border);
+    font-size:15px;margin-bottom:14px;outline:none;transition:border .2s;
+  }
+  .login-box input:focus{border-color:var(--green)}
+  .btn-login{
+    width:100%;padding:14px;background:var(--green);color:#fff;border-radius:10px;
+    font-size:16px;font-weight:700;transition:background .2s;
+  }
+  .btn-login:hover{background:var(--green-light)}
+  .login-error{color:var(--red);font-size:13px;margin-top:10px;min-height:20px}
+
+  /* ── LAYOUT ── */
+  #app{display:none}
+  .sidebar{
+    position:fixed;top:0;left:0;width:240px;height:100vh;
+    background:var(--dark);color:#fff;display:flex;flex-direction:column;
+    padding:24px 0;z-index:100;
+  }
+  .sidebar-logo{
+    display:flex;align-items:center;gap:10px;padding:0 24px 28px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .sidebar-logo-icon{
+    width:38px;height:38px;background:var(--green);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+  }
+  .sidebar-logo span{font-size:20px;font-weight:700;color:#fff}
+  .sidebar-logo small{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:1px;text-transform:uppercase;display:block}
+  nav{flex:1;padding:16px 0}
+  .nav-item{
+    display:flex;align-items:center;gap:12px;padding:12px 24px;
+    font-size:14px;font-weight:500;color:rgba(255,255,255,.65);
+    transition:all .2s;cursor:pointer;border-left:3px solid transparent;
+  }
+  .nav-item:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .nav-item.active{color:#fff;background:rgba(45,106,79,.35);border-left-color:var(--green)}
+  .nav-item .nav-icon{font-size:18px;width:22px;text-align:center}
+  .sidebar-footer{padding:16px 24px;border-top:1px solid rgba(255,255,255,.08)}
+  .btn-logout{
+    width:100%;padding:10px;background:rgba(230,57,70,.15);color:var(--red);
+    border-radius:8px;font-size:13px;font-weight:600;transition:background .2s;
+  }
+  .btn-logout:hover{background:rgba(230,57,70,.3)}
+
+  .main{margin-left:240px;min-height:100vh;padding:32px}
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:28px;
+  }
+  .topbar h2{font-size:24px;color:var(--dark)}
+  .topbar-right{display:flex;align-items:center;gap:12px}
+  .badge-live{
+    background:var(--green-pale);color:var(--green);font-size:11px;
+    font-weight:700;padding:5px 12px;border-radius:50px;letter-spacing:.5px;
+  }
+
+  /* ── PAGES ── */
+  .page{display:none}
+  .page.active{display:block}
+
+  /* ── STATS ── */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px}
+  .stat-card{
+    background:#fff;border-radius:16px;padding:24px;border:1px solid var(--border);
+    position:relative;overflow:hidden;
+  }
+  .stat-card::after{
+    content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;
+    border-radius:50%;opacity:.08;
+  }
+  .stat-card.green::after{background:var(--green)}
+  .stat-card.gold::after{background:var(--gold)}
+  .stat-card.red::after{background:var(--red)}
+  .stat-card.blue::after{background:#457b9d}
+  .stat-icon{font-size:28px;margin-bottom:10px}
+  .stat-val{font-size:32px;font-weight:700;color:var(--dark)}
+  .stat-label{font-size:13px;color:var(--muted);margin-top:4px}
+
+  /* ── ORDERS TABLE ── */
+  .card{
+    background:#fff;border-radius:16px;border:1px solid var(--border);
+    overflow:hidden;margin-bottom:24px;
+  }
+  .card-header{
+    padding:18px 24px;border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .card-header h3{font-size:16px;font-weight:700;color:var(--dark)}
+  table{width:100%;border-collapse:collapse}
+  th{
+    background:var(--off);padding:12px 16px;font-size:12px;
+    font-weight:700;color:var(--muted);text-transform:uppercase;
+    letter-spacing:.5px;text-align:left;border-bottom:1px solid var(--border);
+  }
+  td{padding:14px 16px;font-size:14px;border-bottom:1px solid var(--border)}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:var(--off)}
+  .status-badge{
+    padding:4px 10px;border-radius:50px;font-size:11px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.5px;
+  }
+  .status-pending{background:#fff3cd;color:#856404}
+  .status-confirmed{background:#cfe2ff;color:#084298}
+  .status-shipped{background:var(--green-pale);color:var(--green)}
+  .status-delivered{background:#d1e7dd;color:#0a3622}
+  .status-cancelled{background:#f8d7da;color:#842029}
+  .action-btn{
+    padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;
+    transition:all .2s;margin-right:4px;
+  }
+  .btn-ship{background:var(--green-pale);color:var(--green)}
+  .btn-ship:hover{background:var(--green);color:#fff}
+  .btn-del{background:#fde;color:var(--red)}
+  .btn-del:hover{background:var(--red);color:#fff}
+  .btn-view{background:var(--off);color:var(--text);border:1px solid var(--border)}
+  .btn-view:hover{background:var(--green-xpale)}
+
+  /* ── SEARCH & FILTER ── */
+  .table-controls{
+    display:flex;gap:12px;align-items:center;padding:16px 24px;
+    border-bottom:1px solid var(--border);
+  }
+  .search-input{
+    flex:1;padding:9px 14px;border-radius:8px;border:2px solid var(--border);
+    font-size:13px;outline:none;transition:border .2s;
+  }
+  .search-input:focus{border-color:var(--green)}
+  .filter-select{
+    padding:9px 14px;border-radius:8px;border:2px solid var(--border);
+    font-size:13px;outline:none;background:#fff;cursor:pointer;
+  }
+  .filter-select:focus{border-color:var(--green)}
+  .btn-refresh{
+    padding:9px 16px;background:var(--green);color:#fff;border-radius:8px;
+    font-size:13px;font-weight:600;transition:background .2s;
+  }
+  .btn-refresh:hover{background:var(--green-light)}
+
+  /* ── PRODUCT EDITOR ── */
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:24px}
+  .form-group{display:flex;flex-direction:column;gap:6px}
+  .form-group label{font-size:13px;font-weight:600;color:var(--text)}
+  .form-group input,
+  .form-group textarea,
+  .form-group select{
+    padding:11px 14px;border-radius:8px;border:2px solid var(--border);
+    font-size:14px;outline:none;transition:border .2s;font-family:inherit;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus{border-color:var(--green)}
+  .form-group textarea{resize:vertical;min-height:100px}
+  .form-group.full{grid-column:1/-1}
+  .btn-save{
+    margin:0 24px 24px;padding:12px 28px;background:var(--green);color:#fff;
+    border-radius:8px;font-size:14px;font-weight:700;transition:background .2s;
+  }
+  .btn-save:hover{background:var(--green-light)}
+
+  /* ── ORDER DETAIL MODAL ── */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;
+    display:flex;align-items:center;justify-content:center;padding:20px;
+    opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{
+    background:#fff;border-radius:20px;width:100%;max-width:540px;
+    max-height:90vh;overflow-y:auto;
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+    transform:translateY(16px);transition:transform .25s;
+  }
+  .modal-overlay.open .modal{transform:translateY(0)}
+  .modal-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 24px;border-bottom:1px solid var(--border);
+  }
+  .modal-header h3{font-size:18px;color:var(--dark)}
+  .modal-close{
+    width:32px;height:32px;border-radius:50%;background:var(--off);
+    font-size:18px;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);transition:background .2s;
+  }
+  .modal-close:hover{background:var(--border)}
+  .modal-body{padding:24px}
+  .detail-row{
+    display:flex;justify-content:space-between;
+    padding:10px 0;border-bottom:1px solid var(--border);
+    font-size:14px;
+  }
+  .detail-row:last-child{border-bottom:none}
+  .detail-row span:first-child{color:var(--muted);font-weight:500}
+  .detail-row span:last-child{font-weight:600;color:var(--dark);text-align:right;max-width:60%}
+  .modal-status-row{
+    display:flex;align-items:center;gap:12px;
+    padding:16px 24px;border-top:1px solid var(--border);
+  }
+  .modal-status-row select{
+    flex:1;padding:10px 14px;border-radius:8px;border:2px solid var(--border);
+    font-size:14px;outline:none;
+  }
+  .modal-status-row select:focus{border-color:var(--green)}
+  .btn-update-status{
+    padding:10px 20px;background:var(--green);color:#fff;
+    border-radius:8px;font-size:14px;font-weight:700;transition:background .2s;
+  }
+  .btn-update-status:hover{background:var(--green-light)}
+
+  /* ── TOAST ── */
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);
+    background:var(--dark);color:#fff;padding:12px 22px;border-radius:10px;
+    font-size:14px;font-weight:500;z-index:9999;opacity:0;transition:all .3s;
+    display:flex;align-items:center;gap:8px;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  .toast.success{background:var(--green)}
+  .toast.error{background:var(--red)}
+
+  /* ── EMPTY STATE ── */
+  .empty-state{
+    text-align:center;padding:60px 20px;color:var(--muted);
+  }
+  .empty-state .empty-icon{font-size:48px;display:block;margin-bottom:12px}
+  .empty-state p{font-size:15px}
+
+  /* ── LOADING ── */
+  .loading{text-align:center;padding:40px;color:var(--muted);font-size:14px}
+
+  @media(max-width:900px){
+    .sidebar{width:200px}
+    .main{margin-left:200px;padding:20px}
+    .stats-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .sidebar{display:none}
+    .main{margin-left:0;padding:16px}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .form-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">🌿</div>
+    <h1>Moringai Admin</h1>
+    <p>Sign in to manage your store</p>
+    <input type="text" id="loginUser" placeholder="Username" autocomplete="username">
+    <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn-login" onclick="doLogin()">🔐 Sign In</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🌿</div>
+      <div>
+        <span>Moringai</span>
+        <small>Admin Panel</small>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-item active" onclick="showPage('dashboard')" id="nav-dashboard">
+        <span class="nav-icon">📊</span> Dashboard
+      </div>
+      <div class="nav-item" onclick="showPage('orders')" id="nav-orders">
+        <span class="nav-icon">📦</span> Orders
+      </div>
+      <div class="nav-item" onclick="showPage('product')" id="nav-product">
+        <span class="nav-icon">🛒</span> Product
+      </div>
+      <div class="nav-item" onclick="showPage('settings')" id="nav-settings">
+        <span class="nav-icon">⚙️</span> Settings
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn-logout" onclick="doLogout()">🚪 Logout</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="topbar">
+        <h2>📊 Dashboard</h2>
+        <div class="topbar-right">
+          <span class="badge-live">🟢 Live</span>
+          <button class="btn-refresh" onclick="loadDashboard()">↻ Refresh</button>
+        </div>
+      </div>
+      <div class="stats-grid" id="statsGrid">
+        <div class="loading">Loading stats...</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>📦 Recent Orders</h3></div>
+        <div id="recentOrdersTable"><div class="loading">Loading orders...</div></div>
+      </div>
+    </div>
+
+    <!-- ORDERS -->
+    <div class="page" id="page-orders">
+      <div class="topbar">
+        <h2>📦 All Orders</h2>
+        <button class="btn-refresh" onclick="loadOrders()">↻ Refresh</button>
+      </div>
+      <div class="card">
+        <div class="table-controls">
+          <input class="search-input" id="orderSearch" placeholder="🔍 Search by name, phone, order ID..." oninput="filterOrders()">
+          <select class="filter-select" id="orderFilter" onchange="filterOrders()">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div id="ordersTable"><div class="loading">Loading orders...</div></div>
+      </div>
+    </div>
+
+    <!-- PRODUCT -->
+    <div class="page" id="page-product">
+      <div class="topbar"><h2>🛒 Product Editor</h2></div>
+      <div class="card">
+        <div class="card-header"><h3>Edit Product Details</h3></div>
+        <div class="form-grid" id="productForm">
+          <div class="loading">Loading product...</div>
+        </div>
+        <button class="btn-save" onclick="saveProduct()">💾 Save Product</button>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="page" id="page-settings">
+      <div class="topbar"><h2>⚙️ Settings</h2></div>
+      <div class="card">
+        <div class="card-header"><h3>Store Settings</h3></div>
+        <div class="form-grid" id="settingsForm">
+          <div class="loading">Loading settings...</div>
+        </div>
+        <button class="btn-save" onclick="saveSettings()">💾 Save Settings</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ORDER DETAIL MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalOrderId">Order Details</h3>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-status-row">
+      <select id="modalStatusSelect">
+        <option value="pending">Pending</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="shipped">Shipped</option>
+        <option value="delivered">Delivered</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+      <button class="btn-update-status" onclick="updateModalStatus()">✅ Update Status</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>

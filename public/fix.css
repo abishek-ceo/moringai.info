@@ -1,0 +1,5 @@
+/* Emergency fix: make all fade-in elements visible immediately */
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}

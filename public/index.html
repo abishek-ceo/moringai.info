@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="razorpay-key" content="">
 <title>Moringai — Pure Murungai | India's #1 Moringa Brand</title>
 <meta name="description" content="Moringai offers 100% organic moringa powder sourced directly from Tamil Nadu farmers. NABL-certified, pesticide-free, delivered across India.">
 <meta property="og:title" content="Moringai — Pure Murungai | India's #1 Moringa Brand">
@@ -73,7 +72,7 @@
   .search-bar-inner { max-width: 680px; margin: 0 auto; display: flex; gap: 10px; align-items: center; }
   .search-input { flex: 1; padding: 12px 20px; border-radius: 50px; border: 2px solid var(--border); font-size: 15px; font-family: 'Inter', sans-serif; outline: none; transition: var(--transition); }
   .search-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,106,79,0.1); }
-  .search-close-btn { background: none; font-size: 20px; color: var(--text-muted); padding: 8px; border-radius: 8px; }
+  .search-close-btn { background: none; font-size: 20px; color: var(--text-muted); padding: 8px; border-radius: 8px; cursor: pointer; }
   .search-results-preview { margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
   .search-result-chip { background: var(--green-xpale); color: var(--green); border-radius: 50px; padding: 5px 14px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--green-pale); transition: var(--transition); }
   .search-result-chip:hover { background: var(--green); color: white; }
@@ -121,16 +120,17 @@
   #products { padding: 96px 5%; background: var(--off-white); }
   .products-inner { max-width: 1300px; margin: 0 auto; }
   .products-filter { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
-  .filter-btn { padding: 9px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; background: white; color: var(--text-muted); border: 2px solid var(--border); transition: var(--transition); }
+  .filter-btn { padding: 9px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; background: white; color: var(--text-muted); border: 2px solid var(--border); transition: var(--transition); cursor: pointer; }
   .filter-btn.active, .filter-btn:hover { background: var(--green); color: white; border-color: var(--green); }
   .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; }
   .product-card { background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); position: relative; }
   .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--green-pale); }
+  .product-card.hidden { display: none; }
   .product-badge { position: absolute; top: 16px; left: 16px; z-index: 2; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; border-radius: 50px; }
   .badge-bestseller { background: var(--green); color: white; }
   .badge-new { background: var(--gold); color: white; }
   .badge-sale { background: #e63946; color: white; }
-  .product-wishlist { position: absolute; top: 16px; right: 16px; z-index: 2; background: white; border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: var(--transition); }
+  .product-wishlist { position: absolute; top: 16px; right: 16px; z-index: 2; background: white; border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: var(--transition); cursor: pointer; }
   .product-wishlist:hover { background: #ffe0e0; border-color: #e63946; }
   .product-img { height: 220px; background: var(--green-xpale); display: flex; align-items: center; justify-content: center; font-size: 80px; transition: var(--transition); position: relative; }
   .product-card:hover .product-img { background: var(--green-pale); }
@@ -146,10 +146,10 @@
   .price-current { font-size: 22px; font-weight: 700; color: var(--green); font-family: 'Playfair Display', serif; }
   .price-old { font-size: 14px; color: #aaa; text-decoration: line-through; }
   .price-save { font-size: 11px; color: #e63946; font-weight: 700; }
-  .add-to-cart { background: var(--green); color: white; padding: 10px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 6px; }
+  .add-to-cart { background: var(--green); color: white; padding: 10px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 6px; cursor: pointer; }
   .add-to-cart:hover { background: var(--green-light); transform: scale(1.04); }
-  .product-variants { display: flex; gap: 8px; margin-bottom: 12px; }
-  .variant-btn { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; border: 1.5px solid var(--border); color: var(--text-muted); background: white; transition: var(--transition); }
+  .product-variants { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .variant-btn { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; border: 1.5px solid var(--border); color: var(--text-muted); background: white; transition: var(--transition); cursor: pointer; }
   .variant-btn.active, .variant-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-xpale); }
 
   /* STOCK INDICATOR */
@@ -159,7 +159,7 @@
   .stock-bar-fill.high { background: var(--green); }
   .stock-bar-fill.medium { background: #f4a261; }
   .stock-bar-fill.low { background: #e63946; }
-  .stock-text { font-size: 11px; font-weight: 700; }
+  .stock-text { font-size: 11px; font-weight: 700; white-space: nowrap; }
   .stock-text.low { color: #e63946; }
   .stock-text.medium { color: #f4a261; }
   .stock-text.high { color: var(--green); }
@@ -232,7 +232,7 @@
   #blog { padding: 96px 5%; background: var(--off-white); }
   .blog-inner { max-width: 1300px; margin: 0 auto; }
   .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
-  .blog-card { background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); }
+  .blog-card { background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); cursor: pointer; }
   .blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
   .blog-img { height: 180px; background: var(--green-xpale); display: flex; align-items: center; justify-content: center; font-size: 60px; transition: var(--transition); }
   .blog-card:hover .blog-img { background: var(--green-pale); }
@@ -267,7 +267,7 @@
   .cart-sidebar.open { right: 0; }
   .cart-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
   .cart-header h3 { font-size: 20px; color: var(--dark); }
-  .cart-close { background: none; font-size: 22px; color: var(--text-muted); padding: 4px 8px; border-radius: 8px; }
+  .cart-close { background: none; font-size: 22px; color: var(--text-muted); padding: 4px 8px; border-radius: 8px; cursor: pointer; }
   .cart-close:hover { background: var(--border); }
 
   /* CART PROGRESS BAR */
@@ -282,8 +282,8 @@
   .cart-empty p { color: var(--text-muted); font-size: 15px; }
   .cart-item { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
   .cart-item-img { width: 70px; height: 70px; background: var(--green-xpale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
-  .cart-item-info { flex: 1; }
-  .cart-item-name { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .cart-item-info { flex: 1; min-width: 0; }
+  .cart-item-name { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cart-item-variant { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
   .cart-item-footer { display: flex; align-items: center; justify-content: space-between; }
   .cart-item-price { font-weight: 700; color: var(--green); font-size: 16px; }
@@ -291,7 +291,8 @@
   .qty-btn { width: 28px; height: 28px; border-radius: 8px; background: var(--green-pale); color: var(--green); font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: var(--transition); }
   .qty-btn:hover { background: var(--green); color: white; }
   .qty-num { font-size: 14px; font-weight: 600; min-width: 20px; text-align: center; }
-  .cart-remove { background: none; color: #e63946; font-size: 14px; padding: 4px; border: none; cursor: pointer; }
+  .cart-remove { background: none; color: #e63946; font-size: 18px; padding: 4px 8px; border: none; cursor: pointer; line-height: 1; }
+  .cart-remove:hover { opacity: 0.7; }
 
   /* BUNDLE UPSELL IN CART */
   .cart-upsell { margin: 12px 0; background: var(--green-xpale); border: 1.5px dashed var(--green-pale); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
@@ -309,7 +310,7 @@
   .btn-checkout:hover { background: var(--green-light); }
 
   /* CHECKOUT MODAL */
-  .checkout-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: var(--transition); }
+  .checkout-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: var(--transition); padding: 16px; }
   .checkout-overlay.open { opacity: 1; pointer-events: all; }
   .checkout-modal { background: white; border-radius: 24px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; padding: 40px; position: relative; box-shadow: 0 24px 80px rgba(0,0,0,0.2); transform: translateY(20px); transition: var(--transition); }
   .checkout-overlay.open .checkout-modal { transform: translateY(0); }
@@ -320,7 +321,7 @@
   .cform-group { margin-bottom: 18px; }
   .cform-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
   .cform-group input, .cform-group select { width: 100%; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); font-size: 14px; font-family: 'Inter', sans-serif; background: white; color: var(--text); outline: none; transition: var(--transition); }
-  .cform-group input:focus, .cform-group select:focus { border-color: var(--green); }
+  .cform-group input:focus, .cform-group select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,106,79,0.1); }
   .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .order-summary { background: var(--off-white); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
   .order-summary h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 14px; }
@@ -329,7 +330,7 @@
   .payment-methods { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
   .payment-method { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 2px solid var(--border); border-radius: 12px; cursor: pointer; transition: var(--transition); }
   .payment-method:hover, .payment-method.selected { border-color: var(--green); background: var(--green-xpale); }
-  .payment-method input[type=radio] { accent-color: var(--green); }
+  .payment-method input[type=radio] { accent-color: var(--green); width: 16px; height: 16px; cursor: pointer; }
   .payment-method-label { flex: 1; }
   .payment-method-label strong { display: block; font-size: 14px; color: var(--dark); }
   .payment-method-label span { font-size: 12px; color: var(--text-muted); }
@@ -340,8 +341,8 @@
   .razorpay-note { text-align: center; font-size: 11px; color: var(--text-muted); margin-top: 12px; }
 
   /* TOAST */
-  .toast { position: fixed; bottom: 24px; right: 24px; z-index: 9999; background: var(--dark); color: white; padding: 14px 20px; border-radius: 12px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 10px; transform: translateY(80px); opacity: 0; transition: var(--transition); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); z-index: 9999; background: var(--dark); color: white; padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 10px; opacity: 0; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 8px 24px rgba(0,0,0,0.2); white-space: nowrap; }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
   /* WHATSAPP FLOAT */
   .whatsapp-float { position: fixed; bottom: 90px; right: 24px; z-index: 9998; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); text-decoration: none; }
@@ -351,8 +352,8 @@
 
   /* MOBILE FLOATING BUY BUTTON */
   .mobile-buy-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1500; background: white; border-top: 2px solid var(--border); padding: 12px 20px; gap: 12px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
-  .mobile-buy-bar .btn-cart { flex: 1; padding: 14px; background: var(--green-pale); color: var(--green); border-radius: 12px; font-size: 15px; font-weight: 700; border: 2px solid var(--green); }
-  .mobile-buy-bar .btn-buynow { flex: 2; padding: 14px; background: var(--green); color: white; border-radius: 12px; font-size: 15px; font-weight: 700; border: none; }
+  .mobile-buy-bar .btn-cart { flex: 1; padding: 14px; background: var(--green-pale); color: var(--green); border-radius: 12px; font-size: 15px; font-weight: 700; border: 2px solid var(--green); cursor: pointer; }
+  .mobile-buy-bar .btn-buynow { flex: 2; padding: 14px; background: var(--green); color: white; border-radius: 12px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; }
 
   /* FOOTER */
   footer { background: var(--dark); color: rgba(255,255,255,0.75); padding: 80px 5% 32px; }
@@ -399,16 +400,18 @@
     .footer-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .cform-row { grid-template-columns: 1fr; }
-    .checkout-modal { margin: 0 16px; padding: 28px 20px; }
+    .checkout-modal { padding: 28px 20px; }
     .mobile-buy-bar { display: flex; }
     .whatsapp-float { bottom: 80px; }
     footer { padding-bottom: 80px; }
+    .toast { font-size: 13px; padding: 12px 18px; }
   }
   @media(max-width: 480px) {
     .trust-bar-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
     .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
     .hero-ctas { flex-direction: column; align-items: center; }
     .hero-ctas .btn-primary, .hero-ctas .btn-outline { width: 100%; justify-content: center; }
+    .products-grid { grid-template-columns: 1fr; }
   }
 
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -533,7 +536,7 @@
       <!-- Product 1 -->
       <div class="product-card fade-in" data-category="powder" data-name="Moringai Murungai Powder">
         <span class="product-badge badge-bestseller">Bestseller</span>
-        <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
+        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
         <div class="product-img">🌿</div>
         <div class="product-info">
           <div class="product-category">Powder</div>
@@ -544,7 +547,7 @@
             <div class="stock-bar-track"><div class="stock-bar-fill low" style="width:18%"></div></div>
             <span class="stock-text low">⚡ Only 9 left!</span>
           </div>
-          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="7200"></span></div>
+          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="7200">02:00:00</span></div>
           <div class="product-variants">
             <button class="variant-btn active" onclick="selectVariant(this,'100g Pouch')">100g</button>
             <button class="variant-btn" onclick="selectVariant(this,'250g Pouch')">250g</button>
@@ -556,7 +559,7 @@
               <span class="price-old">₹1,199</span>
               <span class="price-save">Save ₹300</span>
             </div>
-            <button class="add-to-cart" onclick="addToCart('Moringai Murungai Powder',899,'🌿','100g Pouch')">+ Add</button>
+            <button class="add-to-cart" onclick="addToCart('Moringai Murungai Powder',899,'🌿', getActiveVariant(this))">+ Add</button>
           </div>
         </div>
       </div>
@@ -564,7 +567,7 @@
       <!-- Product 2 -->
       <div class="product-card fade-in" data-category="capsules" data-name="Moringa Veg Capsules">
         <span class="product-badge badge-new">New</span>
-        <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
+        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
         <div class="product-img">💊</div>
         <div class="product-info">
           <div class="product-category">Capsules</div>
@@ -585,14 +588,14 @@
               <span class="price-old">₹1,099</span>
               <span class="price-save">Save ₹200</span>
             </div>
-            <button class="add-to-cart" onclick="addToCart('Moringa Veg Capsules',899,'💊','60 Veg Caps')">+ Add</button>
+            <button class="add-to-cart" onclick="addToCart('Moringa Veg Capsules',899,'💊', getActiveVariant(this))">+ Add</button>
           </div>
         </div>
       </div>
 
       <!-- Product 3 -->
       <div class="product-card fade-in" data-category="oil" data-name="Cold-Pressed Moringa Oil">
-        <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
+        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
         <div class="product-img">🫙</div>
         <div class="product-info">
           <div class="product-category">Oil</div>
@@ -613,14 +616,14 @@
               <span class="price-old">₹1,199</span>
               <span class="price-save">Save ₹300</span>
             </div>
-            <button class="add-to-cart" onclick="addToCart('Cold-Pressed Moringa Oil',899,'🫙','50ml Cold-Pressed')">+ Add</button>
+            <button class="add-to-cart" onclick="addToCart('Cold-Pressed Moringa Oil',899,'🫙', getActiveVariant(this))">+ Add</button>
           </div>
         </div>
       </div>
 
       <!-- Product 4 -->
       <div class="product-card fade-in" data-category="tea" data-name="Moringa Green Tea Bags">
-        <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
+        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
         <div class="product-img">🍵</div>
         <div class="product-info">
           <div class="product-category">Tea</div>
@@ -641,7 +644,7 @@
               <span class="price-old">₹1,099</span>
               <span class="price-save">Save ₹200</span>
             </div>
-            <button class="add-to-cart" onclick="addToCart('Moringa Green Tea',899,'🍵','25 Pyramid Bags')">+ Add</button>
+            <button class="add-to-cart" onclick="addToCart('Moringa Green Tea',899,'🍵', getActiveVariant(this))">+ Add</button>
           </div>
         </div>
       </div>
@@ -649,7 +652,7 @@
       <!-- Product 5 -->
       <div class="product-card fade-in" data-category="powder" data-name="Moringa Seed Powder">
         <span class="product-badge badge-sale">Sale</span>
-        <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
+        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
         <div class="product-img">🌾</div>
         <div class="product-info">
           <div class="product-category">Powder</div>
@@ -660,7 +663,7 @@
             <div class="stock-bar-track"><div class="stock-bar-fill low" style="width:12%"></div></div>
             <span class="stock-text low">⚡ Only 6 left!</span>
           </div>
-          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="10800"></span></div>
+          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="10800">03:00:00</span></div>
           <div class="product-variants">
             <button class="variant-btn active" onclick="selectVariant(this,'100g')">100g</button>
             <button class="variant-btn" onclick="selectVariant(this,'200g')">200g</button>
@@ -671,7 +674,7 @@
               <span class="price-old">₹1,199</span>
               <span class="price-save">Save ₹300</span>
             </div>
-            <button class="add-to-cart" onclick="addToCart('Moringa Seed Powder',899,'🌾','100g')">+ Add</button>
+            <button class="add-to-cart" onclick="addToCart('Moringa Seed Powder',899,'🌾', getActiveVariant(this))">+ Add</button>
           </div>
         </div>
       </div>
@@ -679,7 +682,7 @@
       <!-- Product 6 - Combo -->
       <div class="product-card fade-in" data-category="combo" data-name="Wellness Starter Pack">
         <span class="product-badge badge-bestseller">Best Value</span>
-        <button class="product-wishlist" onclick="toggleWishlist(this)">🤍</button>
+        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Wishlist">🤍</button>
         <div class="product-img">🎁</div>
         <div class="product-info">
           <div class="product-category">Combo</div>
@@ -690,10 +693,10 @@
             <div class="stock-bar-track"><div class="stock-bar-fill medium" style="width:30%"></div></div>
             <span class="stock-text medium">🟡 Selling fast!</span>
           </div>
-          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="5400"></span></div>
+          <div class="urgency-timer">🔥 Deal ends in: <span class="timer-val" data-seconds="5400">01:30:00</span></div>
           <div class="product-variants">
-            <button class="variant-btn active">Starter</button>
-            <button class="variant-btn" onclick="selectVariant(this,'Premium')">Premium</button>
+            <button class="variant-btn active" onclick="selectVariant(this,'Starter Pack')">Starter</button>
+            <button class="variant-btn" onclick="selectVariant(this,'Premium Pack')">Premium</button>
           </div>
           <div class="product-footer">
             <div class="product-price">
@@ -701,7 +704,7 @@
               <span class="price-old">₹1,499</span>
               <span class="price-save">Save ₹600</span>
             </div>
-            <button class="add-to-cart" onclick="addToCart('Wellness Starter Pack',899,'🎁','Powder+Capsules+Tea')">+ Add</button>
+            <button class="add-to-cart" onclick="addToCart('Wellness Starter Pack',899,'🎁', getActiveVariant(this))">+ Add</button>
           </div>
         </div>
       </div>
@@ -818,4 +821,377 @@
       <p>Whether it's a product question, wholesale inquiry, or just a desire to connect — our team responds within 24 hours.</p>
       <div class="contact-items">
         <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><strong>Email</strong><span>moringa.info@gmail.com</span></div></div>
-        <div class="contact-item"><div class="cont
+        <div class="contact-item"><div class="contact-item-icon">📱</div><div class="contact-item-text"><strong>WhatsApp</strong><span>+91 98765 43210</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text"><strong>Location</strong><span>Chennai, Tamil Nadu, India</span></div></div>
+      </div>
+    </div>
+    <div class="contact-form fade-in">
+      <form onsubmit="handleContactForm(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Priya" required></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma" required></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="priya@example.com" required></div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select>
+            <option value="">Select a topic</option>
+            <option>Product Inquiry</option>
+            <option>Order Support</option>
+            <option>Wholesale / B2B</option>
+            <option>Feedback</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea placeholder="How can we help you?"></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:14px;">Send Message 📩</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">Moringai</span>
+        <p>India's most trusted moringa brand, sourced directly from Tamil Nadu's organic farmers. Pure, certified, and delivered with love.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+          <a href="#" class="social-btn" aria-label="Facebook">👍</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+          <a href="#" class="social-btn" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#products">Moringa Powder</a></li>
+          <li><a href="#products">Veg Capsules</a></li>
+          <li><a href="#products">Cold-Pressed Oil</a></li>
+          <li><a href="#products">Green Tea</a></li>
+          <li><a href="#products">Combos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#why">Why Moringai</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#contact">Track Order</a></li>
+          <li><a href="#contact">Returns</a></li>
+          <li><a href="#contact">FAQ</a></li>
+          <li><a href="#contact">Wholesale</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Moringai. All rights reserved.</p>
+      <div class="footer-badges">
+        <span class="footer-badge">🔒 SSL Secure</span>
+        <span class="footer-badge">🌿 NABL Certified</span>
+        <span class="footer-badge">🚚 Pan-India Shipping</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Your Cart</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-progress" id="cartProgress">
+    <div class="cart-progress-text" id="cartProgressText">Add ₹499 more for free shipping!</div>
+    <div class="cart-progress-bar-track">
+      <div class="cart-progress-bar-fill" id="cartProgressFill" style="width:0%"></div>
+    </div>
+  </div>
+  <div class="cart-items" id="cartItemsContainer">
+    <div class="cart-empty">
+      <span class="cart-empty-icon">🛒</span>
+      <p>Your cart is empty.<br>Add some moringa goodness!</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-upsell">
+      <span class="cart-upsell-emoji">🎁</span>
+      <div class="cart-upsell-text">
+        <strong>Add Wellness Starter Pack</strong>
+        <span>Save extra ₹600 with bundle</span>
+      </div>
+      <button class="cart-upsell-btn" onclick="addToCart('Wellness Starter Pack',899,'🎁','Powder+Capsules+Tea')">+ Add</button>
+    </div>
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">₹0</span>
+    </div>
+    <div class="cart-shipping-note" id="cartShippingNote">🚚 Free shipping unlocked!</div>
+    <button class="btn-checkout" onclick="openCheckout()">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="checkout-overlay" id="checkoutOverlay">
+  <div class="checkout-modal">
+    <button class="checkout-close" onclick="closeCheckout()">✕</button>
+    <h3>Complete Your Order</h3>
+    <p class="subtitle">Secure checkout — your data is safe with us 🔒</p>
+    <div class="order-summary">
+      <h4>Order Summary</h4>
+      <div id="checkoutOrderItems"></div>
+      <div class="order-row"><span>Shipping</span><span id="checkoutShipping">FREE</span></div>
+      <div class="order-row total"><span>Total</span><span id="checkoutTotal">₹0</span></div>
+    </div>
+    <form onsubmit="placeOrder(event)">
+      <div class="cform-row">
+        <div class="cform-group"><label>First Name *</label><input type="text" id="cfName" placeholder="Priya" required></div>
+        <div class="cform-group"><label>Last Name *</label><input type="text" id="cfLName" placeholder="Sharma" required></div>
+      </div>
+      <div class="cform-group"><label>Phone *</label><input type="tel" id="cfPhone" placeholder="+91 98765 43210" required pattern="[0-9+\s\-]{10,15}"></div>
+      <div class="cform-group"><label>Email *</label><input type="email" id="cfEmail" placeholder="priya@example.com" required></div>
+      <div class="cform-group"><label>Address *</label><input type="text" id="cfAddress" placeholder="House/Flat No, Street, Area" required></div>
+      <div class="cform-row">
+        <div class="cform-group"><label>City *</label><input type="text" id="cfCity" placeholder="Chennai" required></div>
+        <div class="cform-group"><label>PIN Code *</label><input type="text" id="cfPin" placeholder="600001" required pattern="[0-9]{6}" maxlength="6"></div>
+      </div>
+      <div class="cform-group">
+        <label>State *</label>
+        <select id="cfState" required>
+          <option value="">Select State</option>
+          <option>Tamil Nadu</option><option>Karnataka</option><option>Kerala</option>
+          <option>Andhra Pradesh</option><option>Telangana</option><option>Maharashtra</option>
+          <option>Delhi</option><option>Gujarat</option><option>Rajasthan</option>
+          <option>West Bengal</option><option>Other</option>
+        </select>
+      </div>
+      <div class="payment-methods">
+        <label class="payment-method selected" id="pmRazorpay">
+          <input type="radio" name="payment" value="razorpay" checked onchange="selectPayment(this)">
+          <span class="payment-method-icon">💳</span>
+          <div class="payment-method-label"><strong>Pay Online</strong><span>UPI, Cards, Net Banking via Razorpay</span></div>
+        </label>
+        <label class="payment-method" id="pmCOD">
+          <input type="radio" name="payment" value="cod" onchange="selectPayment(this)">
+          <span class="payment-method-icon">💵</span>
+          <div class="payment-method-label"><strong>Cash on Delivery</strong><span>Pay when your order arrives</span></div>
+        </label>
+      </div>
+      <button type="submit" class="btn-place-order" id="placeOrderBtn">Place Order →</button>
+      <p class="razorpay-note">🔒 Powered by Razorpay · 256-bit SSL Secured</p>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919876543210?text=Hi%20Moringai!%20I%20want%20to%20know%20more%20about%20your%20products." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  💬
+  <span class="whatsapp-tooltip">Chat with us!</span>
+</a>
+
+<!-- MOBILE BUY BAR -->
+<div class="mobile-buy-bar" id="mobileBuyBar">
+  <button class="btn-cart" onclick="toggleCart()">🛒 Cart (<span id="mobileBuyCartCount">0</span>)</button>
+  <button class="btn-buynow" onclick="addToCart('Moringai Murungai Powder',899,'🌿','100g Pouch'); openCheckout();">Buy Now →</button>
+</div>
+
+<script>
+  // ─── STATE ───────────────────────────────────────────────
+  var cart = [];
+  var FREE_SHIPPING_THRESHOLD = 499;
+
+  // ─── CART FUNCTIONS ──────────────────────────────────────
+  function addToCart(name, price, emoji, variant) {
+    var existing = cart.find(function(i){ return i.name === name && i.variant === variant; });
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ name: name, price: price, emoji: emoji, variant: variant, qty: 1 });
+    }
+    updateCartUI();
+    toggleCart(true);
+    showToast('✅ ' + name + ' added to cart!');
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+  }
+
+  function changeQty(index, delta) {
+    cart[index].qty += delta;
+    if (cart[index].qty <= 0) {
+      cart.splice(index, 1);
+    }
+    updateCartUI();
+  }
+
+  function getCartTotal() {
+    return cart.reduce(function(sum, item){ return sum + item.price * item.qty; }, 0);
+  }
+
+  function getCartCount() {
+    return cart.reduce(function(sum, item){ return sum + item.qty; }, 0);
+  }
+
+  function updateCartUI() {
+    var total = getCartTotal();
+    var count = getCartCount();
+
+    // Update badges
+    document.getElementById('cartCount').textContent = count;
+    document.getElementById('mobileBuyCartCount').textContent = count;
+
+    // Progress bar
+    var pct = Math.min(100, Math.round((total / FREE_SHIPPING_THRESHOLD) * 100));
+    document.getElementById('cartProgressFill').style.width = pct + '%';
+    var remaining = FREE_SHIPPING_THRESHOLD - total;
+    if (remaining > 0) {
+      document.getElementById('cartProgressText').textContent = 'Add ₹' + remaining + ' more for free shipping!';
+      document.getElementById('cartShippingNote') && (document.getElementById('cartShippingNote').textContent = '🚚 ₹' + remaining + ' away from free shipping');
+    } else {
+      document.getElementById('cartProgressText').textContent = '🎉 Free shipping unlocked!';
+      document.getElementById('cartShippingNote') && (document.getElementById('cartShippingNote').textContent = '🚚 Free shipping applied!');
+    }
+
+    // Render items
+    var container = document.getElementById('cartItemsContainer');
+    var footer = document.getElementById('cartFooter');
+    if (cart.length === 0) {
+      container.innerHTML = '<div class="cart-empty"><span class="cart-empty-icon">🛒</span><p>Your cart is empty.<br>Add some moringa goodness!</p></div>';
+      footer.style.display = 'none';
+    } else {
+      var html = '';
+      cart.forEach(function(item, i) {
+        html += '<div class="cart-item">' +
+          '<div class="cart-item-img">' + item.emoji + '</div>' +
+          '<div class="cart-item-info">' +
+            '<div class="cart-item-name">' + item.name + '</div>' +
+            '<div class="cart-item-variant">' + item.variant + '</div>' +
+            '<div class="cart-item-footer">' +
+              '<span class="cart-item-price">₹' + (item.price * item.qty) + '</span>' +
+              '<div class="qty-controls">' +
+                '<button class="qty-btn" onclick="changeQty(' + i + ',-1)">−</button>' +
+                '<span class="qty-num">' + item.qty + '</span>' +
+                '<button class="qty-btn" onclick="changeQty(' + i + ',1)">+</button>' +
+              '</div>' +
+              '<button class="cart-remove" onclick="removeFromCart(' + i + ')" aria-label="Remove">🗑</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      });
+      container.innerHTML = html;
+      document.getElementById('cartSubtotal').textContent = '₹' + total;
+      footer.style.display = 'block';
+    }
+  }
+
+  function toggleCart(forceOpen) {
+    var sidebar = document.getElementById('cartSidebar');
+    var overlay = document.getElementById('cartOverlay');
+    var isOpen = sidebar.classList.contains('open');
+    if (forceOpen === true || !isOpen) {
+      sidebar.classList.add('open');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // ─── CHECKOUT ────────────────────────────────────────────
+  function openCheckout() {
+    if (cart.length === 0) { showToast('⚠️ Your cart is empty!'); return; }
+    // Close cart first
+    document.getElementById('cartSidebar').classList.remove('open');
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.body.style.overflow = 'hidden';
+
+    // Populate order summary
+    var total = getCartTotal();
+    var itemsHtml = cart.map(function(item){
+      return '<div class="order-row"><span>' + item.name + ' (' + item.variant + ') x' + item.qty + '</span><span>₹' + (item.price * item.qty) + '</span></div>';
+    }).join('');
+    document.getElementById('checkoutOrderItems').innerHTML = itemsHtml;
+    document.getElementById('checkoutShipping').textContent = total >= FREE_SHIPPING_THRESHOLD ? 'FREE' : '₹49';
+    var finalTotal = total >= FREE_SHIPPING_THRESHOLD ? total : total + 49;
+    document.getElementById('checkoutTotal').textContent = '₹' + finalTotal;
+
+    document.getElementById('checkoutOverlay').classList.add('open');
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkoutOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function selectPayment(radio) {
+    document.querySelectorAll('.payment-method').forEach(function(el){ el.classList.remove('selected'); });
+    radio.closest('.payment-method').classList.add('selected');
+  }
+
+  function placeOrder(e) {
+    e.preventDefault();
+    var name = document.getElementById('cfName').value.trim();
+    var phone = document.getElementById('cfPhone').value.trim();
+    var selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+
+    if (selectedPayment === 'razorpay') {
+      var razorpayKey = document.querySelector('meta[name="razorpay-key"]') ? document.querySelector('meta[name="razorpay-key"]').getAttribute('content') : '';
+      if (!razorpayKey) {
+        showToast('⚠️ Add your Razorpay key to enable online payments.');
+        return;
+      }
+      var total = getCartTotal();
+      var finalTotal = total >= FREE_SHIPPING_THRESHOLD ? total : total + 49;
+      var options = {
+        key: razorpayKey,
+        amount: finalTotal * 100,
+        currency: 'INR',
+        name: 'Moringai',
+        description: 'Pure Murungai Products',
+        handler: function(response) {
+          closeCheckout();
+          cart = [];
+          updateCartUI();
+          showToast('🎉 Order placed! Payment ID: ' + response.razorpay_payment_id);
+        },
+        prefill: { name: name, contact: phone, email: document.getElementById('cfEmail').value },
+        theme: { color: '#2d6a4f' }
+      };
+      try {
+        var rzp = new Razorpay(options);
+        rzp.open();
+      } catch(err) {
+        showToast('⚠️ Payment gateway error. Please try COD.');
+      }
+    } else {
+      // COD
+      closeCheckout();
+      cart = [];
+      updateCartUI();
+      showToast('🎉 Order placed! COD — we\'ll deliver in 2-5 days.');
+    }
+  }
+
+  // ─── PRODUCT FILTER ──────────────────────────────────────
+  function filterProducts(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(function(card){
+   

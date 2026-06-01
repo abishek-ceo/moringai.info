@@ -18,6 +18,17 @@ function saveCart() {
   localStorage.setItem('moringai_cart', JSON.stringify(cart));
 }
 
+// ─── MOBILE BUY BAR VISIBILITY ────────────────────────────
+function updateMobileBuyBar() {
+  var bar = document.querySelector('.mobile-buy-bar');
+  if (!bar) return;
+  if (getCartCount() > 0) {
+    bar.style.display = 'flex';
+  } else {
+    bar.style.display = 'none';
+  }
+}
+
 // ─── CARD QTY HELPERS ─────────────────────────────────────
 function getCardQty(name, variant) {
   var item = cart.find(function(i){ return i.name === name && i.variant === variant; });
@@ -176,6 +187,9 @@ function updateCartUI() {
     if (subtotalEl) subtotalEl.textContent = '₹' + total;
     footer.style.display = 'block';
   }
+
+  // Show/hide mobile buy bar based on cart
+  updateMobileBuyBar();
 }
 
 function toggleCart(forceOpen) {
